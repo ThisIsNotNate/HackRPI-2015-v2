@@ -10,7 +10,7 @@ import org.newdawn.slick.state.StateBasedGame;
 
 public class Arena extends BasicGameState
 {
-	static int time;
+	int time;
 	
 	public Arena(int state){}
 	

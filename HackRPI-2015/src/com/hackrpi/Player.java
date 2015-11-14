@@ -15,8 +15,9 @@ import org.newdawn.slick.state.StateBasedGame;
 
 public class Player extends Entity
 {
-	static SpriteSheet player;
-	private static Animation playerAnimation;
+	SpriteSheet sheet;
+	private Animation walkingUp, walkingDown, walkingLeft, walkingRight, walking;
+	boolean isWalking;
 	
 	public Player() throws SlickException
 	{
@@ -26,9 +27,8 @@ public class Player extends Entity
 		healthMax = 100;
 		health = healthMax;
 		speed = .8f;
-		player = new SpriteSheet("res/BobRoss.png", 90, 90);
-		playerAnimation = new Animation(player, 100);
-		
+		sheet = new SpriteSheet("res/BobRoss.png", 90, 90);
+		isWalking = false;
 		
 		int[] duration = {1, 1, 1, 1};
 		
@@ -48,36 +48,19 @@ public class Player extends Entity
 		walking = new Animation(walkUp, duration, false);
 		changeDuration(walking, 150);
 		
-		stepSound = new Sound("res/sound/step1.ogg");
-		factor = 0F;
-		walkingFlag = false;
-		
-		Image[] attackUp = {sheet.getSprite(4, 3), sheet.getSprite(5, 3), sheet.getSprite(6, 3), sheet.getSprite(7, 3)};
-		Image[] attackDown = {sheet.getSprite(4, 0), sheet.getSprite(5, 0), sheet.getSprite(6, 0), sheet.getSprite(7, 0)};
-		Image[] attackLeft = {sheet.getSprite(4, 1), sheet.getSprite(5, 1), sheet.getSprite(6, 1), sheet.getSprite(7, 1)};
-		Image[] attackRight = {sheet.getSprite(4, 2), sheet.getSprite(5, 2), sheet.getSprite(6, 2), sheet.getSprite(7, 2)};
-		
-		attackingUp = new Animation(attackUp, duration, false);
-		changeDuration(attackingUp, 75);
-		attackingDown = new Animation(attackDown, duration, false);
-		changeDuration(attackingDown, 75);
-		attackingLeft = new Animation(attackLeft, duration, false);
-		changeDuration(attackingLeft, 75);
-		attackingRight = new Animation(attackRight, duration, false);
-		changeDuration(attackingRight, 75);
-		attacking = new Animation(attackUp, duration, false);
-		changeDuration(attacking, 75);
-
 	}
 
-	public static void render(GameContainer container, StateBasedGame sbg, Graphics g) throws SlickException
+	public void render(GameContainer container, StateBasedGame sbg, Graphics g) throws SlickException
 	{
-		playerAnimation.draw(posX, posY);
+		if(isWalking)
+		{
+			walking.draw(595, 315);
+		}
 		if(health <= 0)
 			sbg.enterState(Game.END);
 	}  
 
-	public static void update(GameContainer container, StateBasedGame sbg, int delta) throws SlickException 
+	public void update(GameContainer container, StateBasedGame sbg, int delta) throws SlickException 
 	{
 		time += delta;
 		
@@ -90,20 +73,30 @@ public class Player extends Entity
 		
 		if(input.isKeyDown(Input.KEY_S) || input.isKeyDown(Input.KEY_DOWN))
 		{
-			
+			walking = walkingDown;
+			isWalking = true;
+			walking.update(delta);
 			posY += delta * speed;
 		}
 		if(input.isKeyDown(Input.KEY_W) || input.isKeyDown(Input.KEY_UP))
 		{
-			
+			walking = walkingUp;
+			isWalking = true;
+			walking.update(delta);
 			posY -= delta * speed;
 		}
 		if(input.isKeyDown(Input.KEY_D) || input.isKeyDown(Input.KEY_RIGHT))
 		{
+			walking = walkingLeft;
+			isWalking = true;
+			walking.update(delta);
 			posX += delta * speed;
 		}
 		if(input.isKeyDown(Input.KEY_A) || input.isKeyDown(Input.KEY_LEFT))
 		{
+			walking = walkingRight;
+			isWalking = true;
+			walking.update(delta);
 			posX-= delta * speed;
 		}
 		if(posY <= 0)
@@ -114,21 +107,19 @@ public class Player extends Entity
 			posX = 0;
 		else if(posX >= 1250)
 			posX = 1250;
-		playerAnimation.update(delta);
-		
 	}
 	
-	public static float getX() { return posX; }	
+	public float getX() { return posX; }	
 	
-	public static float getY() { return posY; }	
+	public float getY() { return posY; }	
 	
-	public static int getHealth() { return health; }
+	public int getHealth() { return health; }
 	
-	public static int getHealthMax() { return healthMax; }
+	public int getHealthMax() { return healthMax; }
 	
-	public static void setHealth(int h) { health = h; }
+	public void setHealth(int h) { health = h; }
 	
-	public static void setHealthMax(int h)
+	public void setHealthMax(int h)
 	{
 		healthMax = h;
 		health = healthMax;

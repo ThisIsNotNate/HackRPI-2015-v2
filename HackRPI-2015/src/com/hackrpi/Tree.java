@@ -10,8 +10,8 @@ import org.newdawn.slick.state.StateBasedGame;
 
 public class Tree extends Entity
 {
-	static SpriteSheet tree;
-	private static Animation treeAnimation;
+	SpriteSheet tree;
+	private Animation treeAnimation;
 	
 	public Tree() throws SlickException
 	{
@@ -39,12 +39,12 @@ public class Tree extends Entity
 		treeAnimation = new Animation(tree, 100);
 	}
 	
-	public static void render(GameContainer container, StateBasedGame sbg, Graphics g) throws SlickException
+	public void render(GameContainer container, StateBasedGame sbg, Graphics g) throws SlickException
 	{
 		treeAnimation.draw(posX, posY);
 	}  
 
-	public static void update(GameContainer container, StateBasedGame sbg, int delta) throws SlickException 
+	public void update(GameContainer container, StateBasedGame sbg, int delta) throws SlickException 
 	{
 		time += delta;
 		

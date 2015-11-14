@@ -11,8 +11,8 @@ import org.newdawn.slick.state.StateBasedGame;
 
 public class Entity 
 {
-	static float posY, posX, speed;
-	static int health, healthMax, time, width, height; 
+	float posY, posX, speed;
+	int health, healthMax, time, width, height; 
 	
 	public Entity(){}
 	
@@ -33,27 +33,27 @@ public class Entity
 		return r1.intersects(r2);
 	}
 
-	public static float getPosY() 
+	public float getPosY() 
 	{
 		return posY;
 	}
 
-	public static float getPosX() 
+	public float getPosX() 
 	{
 		return posX;
 	}
 
-	public static int getWidth()
+	public int getWidth()
 	{
 		return width;
 	}
 
-	public static int getHeight()
+	public int getHeight()
 	{
 		return height;
 	}
 	
-	public static double getCastTime(int castTime, double factor)
+	public double getCastTime(int castTime, double factor)
 	{
 		return (double)castTime + Math.sin(factor * Math.random());
 	}

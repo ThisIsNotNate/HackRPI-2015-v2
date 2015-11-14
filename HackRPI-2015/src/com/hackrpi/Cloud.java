@@ -9,8 +9,8 @@ import org.newdawn.slick.state.StateBasedGame;
 
 public class Cloud extends Entity
 {
-	static SpriteSheet cloud;
-	private static Animation cloudAnimation;
+	SpriteSheet cloud;
+	private Animation cloudAnimation;
 	
 	public Cloud() throws SlickException
 	{
@@ -39,12 +39,12 @@ public class Cloud extends Entity
 		cloudAnimation = new Animation(cloud, 100);
 	}
 	
-	public static void render(GameContainer container, StateBasedGame sbg, Graphics g) throws SlickException
+	public void render(GameContainer container, StateBasedGame sbg, Graphics g) throws SlickException
 	{
 		cloudAnimation.draw(posX, posY);
 	}  
 
-	public static void update(GameContainer container, StateBasedGame sbg, int delta) throws SlickException 
+	public void update(GameContainer container, StateBasedGame sbg, int delta) throws SlickException 
 	{
 		time += delta;
 		

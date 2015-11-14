@@ -15,8 +15,22 @@ public class Tree extends Entity
 	
 	public Tree() throws SlickException
 	{
-		posX = (int)(1280 * Math.random());
-		posY = 50f;
+		if(Math.random() < .5)
+		{
+			posX = (int)(1280 * Math.random());
+			if(Math.random() < .5)
+				posY = 0;
+			else
+				posY = 720;
+		}
+		else
+		{
+			posY = (int)(720 * Math.random());
+			if(Math.random() < .5)
+				posX = 0;
+			else
+				posX = 1280;
+		}
 		time = 0;
 		healthMax = 100;
 		health = healthMax;
@@ -28,8 +42,6 @@ public class Tree extends Entity
 	public static void render(GameContainer container, StateBasedGame sbg, Graphics g) throws SlickException
 	{
 		tree.draw(posX, posY);
-		if(health <= 0)
-			sbg.enterState(Game.END);
 	}  
 
 	public static void update(GameContainer container, StateBasedGame sbg, int delta) throws SlickException 

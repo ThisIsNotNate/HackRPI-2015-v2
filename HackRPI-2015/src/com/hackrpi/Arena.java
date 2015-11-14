@@ -10,17 +10,15 @@ import org.newdawn.slick.state.StateBasedGame;
 
 public class Arena extends BasicGameState
 {
-	Enemy E;
+	static int time;
 	
 	public Arena(int state){}
 	
 	@Override
 	public void init(GameContainer container, StateBasedGame sbg) throws SlickException 
 	{
-		Player.init(container, sbg);
-		
-		E = new Enemy(10);
-		E.init(container, sbg);
+		Player player = new Player();
+		time = 0;
 	}
 
 	@Override
@@ -30,18 +28,19 @@ public class Arena extends BasicGameState
 		g.drawString("Level 1", 1200, 10);
 		
 		Player.render(container, sbg, g);
-		E.render(container, sbg, g);
+		Enemy.render(container, sbg, g);
 	}
 
 	@Override
 	public void update(GameContainer container, StateBasedGame sbg, int delta) throws SlickException 
 	{
+		time += delta;
 		Player.update(container, sbg, delta);
-		E.update(container, sbg, delta);
+		Enemy.update(container, sbg, delta);
 		
 		Input input = container.getInput();
 		if(input.isKeyDown(Input.KEY_ESCAPE))
-			sbg.enterState(Game.menu);
+			sbg.enterState(Game.pause);
 	}	
 
 	@Override

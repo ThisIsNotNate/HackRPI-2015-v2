@@ -19,13 +19,14 @@ public class Player extends Entity
 	
 	public Player() throws SlickException
 	{
+		posX = 50f;
 		posY = 50f;
 		time = 0;
 		healthMax = 100;
 		health = healthMax;
 		speed = .8f;
-		//player = new SpriteSheet("res/BobRoss.png", x, y); //x and y are size of spreadsheet
-		//playerAnimation = new Animation(player, 100);
+		player = new SpriteSheet("res/BobRoss.png", 90, 90);
+		playerAnimation = new Animation(player, 100);
 
 	}
 
@@ -66,7 +67,9 @@ public class Player extends Entity
 		playerAnimation.update(delta);
 		
 	}
-
+	
+	public static float getX() { return posX; }	
+	
 	public static float getY() { return posY; }	
 	
 	public static int getHealth() { return health; }

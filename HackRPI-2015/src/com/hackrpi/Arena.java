@@ -17,7 +17,6 @@ public class Arena extends BasicGameState
 	@Override
 	public void init(GameContainer container, StateBasedGame sbg) throws SlickException 
 	{
-		Player player = new Player();
 		time = 0;
 	}
 
@@ -25,10 +24,9 @@ public class Arena extends BasicGameState
 	public void render(GameContainer container, StateBasedGame sbg, Graphics g) throws SlickException
 	{
 		HUD.render(container, sbg, g);
-		g.drawString("Level 1", 1200, 10);
+		g.drawString("Wave 1", 1200, 10);
 		
 		Player.render(container, sbg, g);
-		Enemy.render(container, sbg, g);
 		
 	}
 
@@ -37,7 +35,6 @@ public class Arena extends BasicGameState
 	{
 		time += delta;
 		Player.update(container, sbg, delta);
-		Enemy.update(container, sbg, delta);
 		
 		Input input = container.getInput();
 		if(input.isKeyDown(Input.KEY_ESCAPE))

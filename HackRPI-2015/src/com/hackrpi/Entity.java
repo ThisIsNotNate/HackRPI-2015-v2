@@ -43,13 +43,19 @@ public class Entity
 		return posX;
 	}
 
-	public static int getWidth() {
+	public static int getWidth()
+	{
 		return width;
 	}
 
-	public static int getHeight() {
+	public static int getHeight()
+	{
 		return height;
 	}
 	
+	public static double getCastTime(int castTime, double factor)
+	{
+		return (double)castTime + Math.sin(factor * Math.random());
+	}
 	
 }

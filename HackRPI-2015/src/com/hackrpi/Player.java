@@ -14,11 +14,10 @@ import org.newdawn.slick.state.StateBasedGame;
 
 public class Player extends Entity
 {
-	public static void init(GameContainer container, StateBasedGame sbg) throws SlickException 
+	public Player(float x, float y, int h, int hMax) throws SlickException
 	{
 		posY = 50f;
 		time = 0;
-		type = 1;
 		healthMax = 100;
 		health = healthMax;
 		speed = .8f;
@@ -130,87 +129,19 @@ public class Player extends Entity
 		}
 	}
 
-	public static float getY()
-	{
-		return posY;
-	}
+	public static float getY() { return posY; }	
 	
-	public static Shape getShape()
-	{
-		return new Rectangle(50, posY, 134, 62);
-	}
+	public static int getHealth() { return health; }
 	
-	public static int getHealth()
-	{
-		return health;
-	}
+	public static int getHealthMax() { return healthMax; }
 	
-	public static int getHealthMax()
-	{
-		return healthMax;
-	}
-	
-	public static int getArmor()
-	{
-		return armor;
-	}
-	
-	public static int getArmorMax()
-	{
-		return armorMax;
-	}
-	
-	public static double getCooldownRate()
-	{
-		return cdr;
-	}
-	
-	public static double getMoney()
-	{
-		return money;
-	}
-	
-	public static double getMoneyMultiplier()
-	{
-		return moneyMultiplier;
-	}
-	
-	public static void setHealth(int h)
-	{
-		health = h;
-	}
+	public static void setHealth(int h) { health = h; }
 	
 	public static void setHealthMax(int h)
 	{
 		healthMax = h;
 		health = healthMax;
-	}
-	
-	public static void setArmor(int a)
-	{
-		armor = a;
-	}
-
-	public static void setArmorMax(int a)
-	{
-		armorMax = a;
-		armor = armorMax;
-	}
-	
-	public static void setCooldownRate(double c)
-	{
-		cdr = c;
-	}
-	
-	public static void setMoneyMultiplier(double m)
-	{
-		moneyMultiplier = m;
-	}
-
-	public static void setMoney(double m)
-	{
-		money = m;
-	}
+	}	
 }
 
 

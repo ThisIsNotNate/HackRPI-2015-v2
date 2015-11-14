@@ -7,12 +7,14 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
 import org.newdawn.slick.state.StateBasedGame;
 
-public interface Entity 
+public class Entity 
 {
-	static float posY, posX, speed;
+	private static float posY, posX, speed;
 	private static int health, healthMax, time; 
 	
-	public static void init(GameContainer gc, StateBasedGame sbg, float x, float y, int h, int hMax) throws SlickException
+	public Entity(){}
+	
+	public Entity(float x, float y, int h, int hMax) throws SlickException
 	{
 		posX = x;
 		posY = y;

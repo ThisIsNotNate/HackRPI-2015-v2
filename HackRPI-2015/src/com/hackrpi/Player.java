@@ -14,29 +14,24 @@ import org.newdawn.slick.state.StateBasedGame;
 
 public class Player extends Entity
 {
-	public Player(float x, float y, int h, int hMax) throws SlickException
+	static SpriteSheet player;
+	private static Animation playerAnimation;
+	
+	public Player() throws SlickException
 	{
 		posY = 50f;
 		time = 0;
 		healthMax = 100;
 		health = healthMax;
 		speed = .8f;
+		player = new SpriteSheet("res/BobRoss.png", x, y);
+		playerAnimation = new Animation(player, 100);
+
 	}
 
 	public static void render(GameContainer container, StateBasedGame sbg, Graphics g) throws SlickException
-	{		
-		int i = 0;
-		while(i < Enemy.getEnemies().size())
-		{
-			if(getShape().intersects(Enemy.getEnemies().get(i).getShape()))
-			{
-				health--;
-				Enemy.getEnemies().remove(i);
-			}
-			else
-				i++;
-		}
-		
+	{
+		player.draw(posX, posY);
 		if(health <= 0)
 			sbg.enterState(Game.end);
 	}
@@ -47,86 +42,29 @@ public class Player extends Entity
 		
 		Input input = container.getInput();
 		
-		if(input.isMouseButtonDown(Input.MOUSE_LEFT_BUTTON) || input.isKeyPressed(Input.KEY_SPACE))
+		if(input.isMouseButtonDown(Input.MOUSE_LEFT_BUTTON))
 		{
-			switch(type)
-			{
-				case(1): if(time >= 500)
-						 {
-						 	Laser.getShots().add(new Laser(160, posY + 5));
-						 	time = 0;
-						 }
-						 break;
-				case(2): if(time >= 100)
-						 {
-							Laser.getShots().add(new Burst(160, posY + 5));
-							time = 0;
-						 }
-						 break;
-				case(3): if(time >= 1500)
-						 {
-							Laser.getShots().add(new Beam(160, posY + 5));
-							time = 0;
-						 }
-						 break;
-			}
+			
 		}
 		
 		if(input.isKeyDown(Input.KEY_S) || input.isKeyDown(Input.KEY_DOWN))
 			posY += delta * speed;
 		if(input.isKeyDown(Input.KEY_W) || input.isKeyDown(Input.KEY_UP))
 			posY -= delta * speed;
+		if(input.isKeyDown(Input.KEY_D) || input.isKeyDown(Input.KEY_RIGHT))
+			posX += delta * speed;
+		if(input.isKeyDown(Input.KEY_A) || input.isKeyDown(Input.KEY_LEFT))
+			posX-= delta * speed;
 		if(posY <= 0)
 			posY = 0;
-		else if(posY >= 550)
-			posY = 550;
-		shipanimation.update(delta);
+		else if(posY >= 680)
+			posY = 680;
+		if(posX <= 0)
+			posX = 0;
+		else if(posX >= 1250)
+			posX = 1250;
+		playerAnimation.update(delta);
 		
-		int i = 0;
-		while(i < Weapon.getShots().size())
-		{
-			switch(type)
-			{
-				case(1): if(Weapon.getShots().get(i).getX() > 1310)
-						     Weapon.getShots().remove(i);
-			 	 		 else
-			 	 		 {
-			 	 			 Weapon.getShots().get(i).setX(Weapon.getShots().get(i).getX() + delta);
-			 	 			 i++;
-			 	 		 }
-						 break;
-				case(2): if(Weapon.getShots().get(i).getX() > 1310)
-							 Weapon.getShots().remove(i);
-					 	 else
-					 	 {
-					 		 Weapon.getShots().get(i).setX(Weapon.getShots().get(i).getX() + 6 * delta);
-					 		 i++;
-					 	 }
-					 	 break;
-				case(3): Weapon.getShots().get(i).setTime(Weapon.getShots().get(i).getTime() + delta);
-						 if(Weapon.getShots().get(i).getTime() > 200)
-						 {
-							 Weapon.getShots().get(i).setTime(0);
-							 Weapon.getShots().remove(i);
-						 }
-						 else
-							 i++;
-						 break;
-				case(4): Weapon.getShots().get(i).setTime(Weapon.getShots().get(i).getTime() + delta);
-						 if(Weapon.getShots().get(i).getTime() > 1000)
-						 {
-							 type = prev;
-							 Weapon.getShots().get(i).setTime(0);
-							 Weapon.getShots().remove(i);
-						 }
-						 else
-						 {
-							 Weapon.getShots().get(i).setY(posY);
-							 i++;
-						 }
-						 break;
-			}
-		}
 	}
 
 	public static float getY() { return posY; }	

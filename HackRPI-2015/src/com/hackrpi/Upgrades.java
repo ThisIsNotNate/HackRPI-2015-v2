@@ -9,7 +9,8 @@ import org.newdawn.slick.state.StateBasedGame;
 
 public class Upgrades extends BasicGameState
 {
-
+	public Upgrades(int state){}
+	
 	public void init(GameContainer container, StateBasedGame sbg) throws SlickException 
 	{
 

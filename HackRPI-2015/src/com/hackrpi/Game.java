@@ -31,7 +31,7 @@ public class Game extends StateBasedGame
 		AppGameContainer appgc;
 		try
 		{
-			appgc = new AppGameContainer(new Game("Yolo"), 1280, 720, false);
+			appgc = new AppGameContainer(new Game("Bob Ross Siege"), 1280, 720, false);
 			appgc.start();
 		}
 		catch(SlickException ex)

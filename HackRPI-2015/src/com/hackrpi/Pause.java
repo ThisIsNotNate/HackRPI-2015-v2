@@ -9,7 +9,9 @@ import org.newdawn.slick.state.StateBasedGame;
 
 public class Pause extends BasicGameState
 {
-
+	
+	public Pause(int state){}
+	
 	public void init(GameContainer container, StateBasedGame sbg) throws SlickException 
 	{
 

@@ -10,6 +10,7 @@ import org.newdawn.slick.state.StateBasedGame;
 
 public class Arena extends BasicGameState
 {
+	Player player;
 	int time;
 	
 	public Arena(int state){}
@@ -17,6 +18,7 @@ public class Arena extends BasicGameState
 	@Override
 	public void init(GameContainer container, StateBasedGame sbg) throws SlickException 
 	{
+		player = new Player();
 		time = 0;
 	}
 
@@ -26,7 +28,7 @@ public class Arena extends BasicGameState
 		HUD.render(container, sbg, g);
 		g.drawString("Wave 1", 1200, 10);
 		
-		Player.render(container, sbg, g);
+		player.render(container, sbg, g);
 		
 	}
 
@@ -34,7 +36,7 @@ public class Arena extends BasicGameState
 	public void update(GameContainer container, StateBasedGame sbg, int delta) throws SlickException 
 	{
 		time += delta;
-		Player.update(container, sbg, delta);
+		player.update(container, sbg, delta);
 		
 		Input input = container.getInput();
 		if(input.isKeyDown(Input.KEY_ESCAPE))

@@ -30,12 +30,12 @@ public class Player extends Entity
 		sheet = new SpriteSheet("res/BobRoss.png", 90, 90);
 		isWalking = false;
 		
-		int[] duration = {1, 1, 1, 1};
+		int[] duration = {1, 1, 1};
 		
-		Image[] walkUp = {sheet.getSprite(0,3), sheet.getSprite(1, 3), sheet.getSprite(2, 3), sheet.getSprite(3, 3)};
-		Image[] walkDown = {sheet.getSprite(0,0), sheet.getSprite(1, 0), sheet.getSprite(2, 0), sheet.getSprite(3, 0)};
-		Image[] walkLeft = {sheet.getSprite(0,1), sheet.getSprite(1, 1), sheet.getSprite(2, 1), sheet.getSprite(3, 1)};
-		Image[] walkRight = {sheet.getSprite(0,2), sheet.getSprite(1, 2), sheet.getSprite(2, 2), sheet.getSprite(3, 2)};
+		Image[] walkUp = {sheet.getSprite(0,1), sheet.getSprite(1, 1), sheet.getSprite(2, 1)};
+		Image[] walkDown = {sheet.getSprite(0,0), sheet.getSprite(1, 0), sheet.getSprite(2, 0)};
+		Image[] walkLeft = {sheet.getSprite(0,3), sheet.getSprite(1, 3), sheet.getSprite(2, 3)};
+		Image[] walkRight = {sheet.getSprite(0,2), sheet.getSprite(1, 2), sheet.getSprite(2, 2)};
 		
 		walkingUp = new Animation(walkUp, duration, false);
 		changeDuration(walkingUp, 150);
@@ -87,14 +87,14 @@ public class Player extends Entity
 		}
 		if(input.isKeyDown(Input.KEY_D) || input.isKeyDown(Input.KEY_RIGHT))
 		{
-			walking = walkingLeft;
+			walking = walkingRight;
 			isWalking = true;
 			walking.update(delta);
 			posX += delta * speed;
 		}
 		if(input.isKeyDown(Input.KEY_A) || input.isKeyDown(Input.KEY_LEFT))
 		{
-			walking = walkingRight;
+			walking = walkingLeft;
 			isWalking = true;
 			walking.update(delta);
 			posX-= delta * speed;

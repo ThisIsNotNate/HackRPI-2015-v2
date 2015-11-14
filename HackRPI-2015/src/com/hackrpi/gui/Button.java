@@ -4,6 +4,7 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.lwjgl.input.Mouse;
+import org.newdawn.slick.Graphics;
 
 public class Button
 {
@@ -36,5 +37,10 @@ public class Button
 			return true;
 		else
 			return false;
+	}
+	
+	public void render(Graphics g)
+	{
+		g.drawImage(image, x, y);
 	}
 }

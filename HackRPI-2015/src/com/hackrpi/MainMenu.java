@@ -1,5 +1,6 @@
 package com.hackrpi;
 
+import com.hackrpi.gui.Button;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -13,9 +14,11 @@ import org.newdawn.slick.Music;
 
 public class MainMenu extends BasicGameState
 {
-	public Image background;
-	public Music menuMusic;
+	Image background;
+	Music menuMusic;
 	Sound openingSound, blip;
+	Button playButton;
+	Button exitButton;
 	double mouseX, mouseY;
 	
 	public MainMenu(int state)
@@ -25,8 +28,10 @@ public class MainMenu extends BasicGameState
 	
 	public void init(GameContainer container, StateBasedGame sbg) throws SlickException 
 	{
-		//Initialize bg image.
-		Image background = new Image("res/MenuBG.png");
+		background = new Image("res/MenuBG.png");
+		
+		playButton = new Button("res/playButton.png", 1280/4 * 2, 720/8 * 2, 320, 90);
+		exitButton = new Button("res/exitButton.png", 1280/4 * 2, 720/8 * 4, 320, 90);
 	}
 
 	@Override
@@ -34,51 +39,24 @@ public class MainMenu extends BasicGameState
 	{
 		Input input = container.getInput();
 		
-		g.drawImage(new Image("res/MenuBG.png"), 0, 0);
-		
-		if(mouseX > 290 && mouseX < 990 && mouseY > 430 && mouseY < 530)
-		{
-			if(input.isMousePressed(Input.MOUSE_LEFT_BUTTON))
-			{
-				g.drawImage(new Image("res/PlayButton3.jpg"), 290, 190);
-				blip.play(1, .5f);
-			}
-			else
-				g.drawImage(new Image("res/PlayButton2.jpg"), 290, 190);
-		}
-		
-		if(mouseX > 290 && mouseX < 990 && mouseY > 270 && mouseY < 370)
-		{
-			if(input.isMousePressed(Input.MOUSE_LEFT_BUTTON))
-			{
-				g.drawImage(new Image("res/SettingsButton3.jpg"), 290, 350);
-				blip.play(1, .5f);
-			}
-			else
-				g.drawImage(new Image("res/SettingsButton2.jpg"), 290, 350);
-		}
-		
-		if(mouseX > 290 && mouseX < 990 && mouseY > 110 && mouseY < 210)
-		{
-			if(input.isMousePressed(Input.MOUSE_LEFT_BUTTON))
-			{
-				g.drawImage(new Image("res/QuitButton3.jpg"), 290, 510);
-				blip.play(1, .5f);
-				container.exit();
-			}
-			else
-				g.drawImage(new Image("res/QuitButton2.jpg"), 290, 510);
-		}
+		g.drawImage(background, 0, 0);
+		playButton.render(g);
+		exitButton.render(g);
 	}
 
 	@Override
 	public void update(GameContainer container, StateBasedGame sbg, int delta) throws SlickException 
 	{
-		mouseX = Mouse.getX();
-		mouseY = Mouse.getY();
 		Input input = container.getInput();
 		
-		
+		if(playButton.isClicked(input))
+		{
+			sbg.enterState(1);
+		}
+		if(exitButton.isClicked(input))
+		{
+			container.exit();
+		}
 	}
 	
 	@Override

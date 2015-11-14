@@ -22,6 +22,6 @@ public class Projectile
 		anim = new Animation(ss, 0); // implement with subclass
 	}
 	
-	public int getDamage(){return damage;}
+	public int getDamage(){return damage;} // test
 	
 }

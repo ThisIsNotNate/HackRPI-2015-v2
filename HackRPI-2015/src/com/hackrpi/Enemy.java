@@ -10,4 +10,5 @@ public interface Enemy extends Entity{
 	public double getCastTime(){
 		return (double)castTime + Math.sin(Math.random());
 	}
+	//test
 }

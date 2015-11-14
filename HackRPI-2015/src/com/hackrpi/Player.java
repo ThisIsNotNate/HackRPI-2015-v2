@@ -33,7 +33,7 @@ public class Player extends Entity
 	{
 		player.draw(posX, posY);
 		if(health <= 0)
-			sbg.enterState(Game.end);
+			sbg.enterState(Game.END);
 	}  
 
 	public static void update(GameContainer container, StateBasedGame sbg, int delta) throws SlickException 

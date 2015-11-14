@@ -109,6 +109,13 @@ public class Player extends Entity
 			posX = 1250;
 	}
 	
+	private void changeDuration(Animation an, int dur)	
+	{		
+		int c = an.getFrameCount();
+		for(int i = 0; i < c; i++)
+			an.setDuration(i, dur);
+	}	
+	
 	public float getX() { return posX; }	
 	
 	public float getY() { return posY; }	

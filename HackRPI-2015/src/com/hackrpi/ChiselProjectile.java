@@ -5,14 +5,16 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
 
-public class ChiselProjectile extends Projectile {
+public class ChiselProjectile extends Projectile 
+{
 	
 	private int width, height,range;
 	private float speed;
 	private Image image;
 	private SpriteSheet ss;
 	private Animation anim;
-	public ChiselProjectile(int d, int s, int w, int l, Image im, float x, float y) throws SlickException {
+	public ChiselProjectile(int d, int s, int w, int l, Image im, float x, float y) throws SlickException 
+	{
 		super(d, s, w, l, im, x, y);
 		width = 90;
 		height = 30;

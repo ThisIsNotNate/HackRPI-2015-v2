@@ -3,7 +3,7 @@ package com.hackrpi;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.state.StateBasedGame;
 
-public class Enemy implements Entity
+public class Enemy extends Entity
 {
 	private static int castTime;
 	

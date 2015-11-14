@@ -7,24 +7,27 @@ import org.newdawn.slick.state.StateBasedGame;
 
 public class Game extends StateBasedGame
 {
-	public static final int mainMenu = 0;
-	public static final int arena = 1;
-	public static final int pause = 2;
-	public static final int upgrades = 3;
-	public static final int end = 4;
+	public static final int MAIN_MENU = 0;
+	public static final int ARENA = 1;
+	public static final int PAUSE = 2;
+	public static final int UPGRADES = 3;
+	public static final int END = 4;
 	
 	public Game(String name)
 	{
 		super(name);
-		addState(new MainMenu(mainMenu));
-		addState(new Arena(arena));
-		addState(new Pause(pause));
-		addState(new Upgrades(upgrades));
-		addState(new End(end));
+		addState(new MainMenu(MAIN_MENU));
+		addState(new Arena(ARENA));
+		addState(new Pause(PAUSE));
+		addState(new Upgrades(UPGRADES));
+		addState(new End(END));
 	}
 
-	@Override
-	public void initStatesList(GameContainer arg0) throws SlickException {}
+	public void initStatesList(GameContainer gc) throws SlickException
+	{
+		this.getState(MAIN_MENU).init(gc, this);
+		this.getState(ARENA).init(gc, this);
+	}
 	
 	public static void main(String[] args)
 	{
@@ -32,6 +35,7 @@ public class Game extends StateBasedGame
 		try
 		{
 			appgc = new AppGameContainer(new Game("Bob Ross Siege"), 1280, 720, false);
+			appgc.setTargetFrameRate(60);
 			appgc.start();
 		}
 		catch(SlickException ex)

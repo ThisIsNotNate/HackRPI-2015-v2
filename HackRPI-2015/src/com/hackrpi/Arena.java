@@ -29,6 +29,7 @@ public class Arena extends BasicGameState
 		
 		Player.render(container, sbg, g);
 		Enemy.render(container, sbg, g);
+		
 	}
 
 	@Override

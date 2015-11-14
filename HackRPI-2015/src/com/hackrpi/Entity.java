@@ -9,8 +9,8 @@ import org.newdawn.slick.state.StateBasedGame;
 
 public class Entity 
 {
-	private static float posY, posX, speed;
-	private static int health, healthMax, time; 
+	static float posY, posX, speed;
+	static int health, healthMax, time; 
 	
 	public Entity(){}
 	

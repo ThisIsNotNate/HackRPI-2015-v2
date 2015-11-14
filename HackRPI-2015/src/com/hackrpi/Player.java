@@ -24,7 +24,7 @@ public class Player extends Entity
 		healthMax = 100;
 		health = healthMax;
 		speed = .8f;
-		player = new SpriteSheet("res/BobRoss.png", x, y);
+		player = new SpriteSheet("res/BobRoss.png", x, y); //x and y are size of spreadsheet
 		playerAnimation = new Animation(player, 100);
 
 	}
@@ -33,7 +33,7 @@ public class Player extends Entity
 	{
 		player.draw(posX, posY);
 		if(health <= 0)
-			sbg.enterState(Game.end);
+			sbg.enterState(Game.END);
 	}  
 
 	public static void update(GameContainer container, StateBasedGame sbg, int delta) throws SlickException 

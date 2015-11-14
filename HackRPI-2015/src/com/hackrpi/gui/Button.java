@@ -21,9 +21,6 @@ public class Button
 		this.height = height;
 	}
 	
-	public void method()
-	{}
-	
 	public boolean isMouseWithinBounds(Input input)
 	{
 		if(input.getMouseX() >= x && input.getMouseX() <= x + width

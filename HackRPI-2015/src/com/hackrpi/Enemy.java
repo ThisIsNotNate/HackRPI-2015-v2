@@ -3,10 +3,12 @@ package com.hackrpi;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.state.StateBasedGame;
 
-public interface Enemy extends Entity{
+public class Enemy implements Entity
+{
 	private static int castTime;
 	
-	public static void init(int ct, GameContainer gc, StateBasedGame sbg, float x, float y, int h, int hMax){
+	public static void init(int ct, GameContainer gc, StateBasedGame sbg, float x, float y, int h, int hMax)
+	{
 		Enemy enemy = new Entity(gc,sbg,x,y,h,hMax);
 		castTime = ct;
 		

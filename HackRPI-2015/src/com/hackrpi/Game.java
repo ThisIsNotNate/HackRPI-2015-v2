@@ -27,6 +27,9 @@ public class Game extends StateBasedGame
 	{
 		this.getState(MAIN_MENU).init(gc, this);
 		this.getState(ARENA).init(gc, this);
+		this.getState(PAUSE).init(gc, this);
+		this.getState(UPGRADES).init(gc, this);
+		this.getState(END).init(gc, this);
 	}
 	
 	public static void main(String[] args)

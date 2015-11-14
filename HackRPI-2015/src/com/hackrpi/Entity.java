@@ -1,4 +1,4 @@
-  package com.hackrpi;
+package com.hackrpi;
 
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.GameContainer;

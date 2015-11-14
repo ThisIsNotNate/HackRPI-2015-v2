@@ -25,6 +25,7 @@ public class MainMenu extends BasicGameState
 	
 	public void init(GameContainer container, StateBasedGame sbg) throws SlickException 
 	{
+		//Initialize bg image.
 		Image background = new Image("res/MenuBG.png");
 	}
 

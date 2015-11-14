@@ -1,180 +1,85 @@
 package com.hackrpi;
 
+import org.lwjgl.input.Mouse;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
-import org.newdawn.slick.state.GameState;
+import org.newdawn.slick.Sound;
+import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+import org.newdawn.slick.Music;
 
-public class MainMenu extends BasicGameState {
+public class MainMenu extends BasicGameState
+{
+	public Music menuMusic;
+	Sound openingSound, blip;
+	double mouseX, mouseY;
+	
+	public MainMenu(int state){}
 
 	@Override
-	public void mouseClicked(int arg0, int arg1, int arg2, int arg3) {
-		// TODO Auto-generated method stub
+	public void init(GameContainer container, StateBasedGame sbg) throws SlickException 
+	{
 
 	}
 
 	@Override
-	public void mouseDragged(int arg0, int arg1, int arg2, int arg3) {
-		// TODO Auto-generated method stub
-
+	public void render(GameContainer container, StateBasedGame sbg, Graphics g) throws SlickException
+	{
+		Input input = container.getInput();
+		
+		g.drawImage(new Image("res/MenuBG.png"), 0, 0);
+		
+		if(mouseX > 290 && mouseX < 990 && mouseY > 430 && mouseY < 530)
+		{
+			if(input.isMousePressed(Input.MOUSE_LEFT_BUTTON))
+			{
+				g.drawImage(new Image("res/PlayButton3.jpg"), 290, 190);
+				blip.play(1, .5f);
+				sbg.enterState(Game.upgrades);
+			}
+			else
+				g.drawImage(new Image("res/PlayButton2.jpg"), 290, 190);
+		}
+		
+		if(mouseX > 290 && mouseX < 990 && mouseY > 270 && mouseY < 370)
+		{
+			if(input.isMousePressed(Input.MOUSE_LEFT_BUTTON))
+			{
+				g.drawImage(new Image("res/SettingsButton3.jpg"), 290, 350);
+				blip.play(1, .5f);
+				sbg.enterState(Game.settings);
+			}
+			else
+				g.drawImage(new Image("res/SettingsButton2.jpg"), 290, 350);
+		}
+		
+		if(mouseX > 290 && mouseX < 990 && mouseY > 110 && mouseY < 210)
+		{
+			if(input.isMousePressed(Input.MOUSE_LEFT_BUTTON))
+			{
+				g.drawImage(new Image("res/QuitButton3.jpg"), 290, 510);
+				blip.play(1, .5f);
+				container.exit();
+			}
+			else
+				g.drawImage(new Image("res/QuitButton2.jpg"), 290, 510);
+		}
 	}
 
 	@Override
-	public void mouseMoved(int arg0, int arg1, int arg2, int arg3) {
-		// TODO Auto-generated method stub
-
+	public void update(GameContainer container, StateBasedGame sbg, int delta) throws SlickException 
+	{
+		mouseX = Mouse.getX();
+		mouseY = Mouse.getY();
 	}
-
+	
 	@Override
-	public void mousePressed(int arg0, int arg1, int arg2) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void mouseReleased(int arg0, int arg1, int arg2) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void mouseWheelMoved(int arg0) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void inputEnded() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void inputStarted() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public boolean isAcceptingInput() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public void setInput(Input arg0) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void keyPressed(int arg0, char arg1) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void keyReleased(int arg0, char arg1) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void controllerButtonPressed(int arg0, int arg1) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void controllerButtonReleased(int arg0, int arg1) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void controllerDownPressed(int arg0) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void controllerDownReleased(int arg0) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void controllerLeftPressed(int arg0) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void controllerLeftReleased(int arg0) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void controllerRightPressed(int arg0) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void controllerRightReleased(int arg0) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void controllerUpPressed(int arg0) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void controllerUpReleased(int arg0) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void enter(GameContainer arg0, StateBasedGame arg1) throws SlickException {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public int getID() {
-		// TODO Auto-generated method stub
+	public int getID() 
+	{
 		return 0;
-	}
-
-	@Override
-	public void init(GameContainer arg0, StateBasedGame arg1) throws SlickException {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void leave(GameContainer arg0, StateBasedGame arg1) throws SlickException {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void render(GameContainer arg0, StateBasedGame arg1, Graphics arg2) throws SlickException {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void update(GameContainer arg0, StateBasedGame arg1, int arg2) throws SlickException {
-		// TODO Auto-generated method stub
-
 	}
 
 }

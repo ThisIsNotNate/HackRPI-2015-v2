@@ -13,16 +13,19 @@ import org.newdawn.slick.Music;
 
 public class MainMenu extends BasicGameState
 {
+	public Image background;
 	public Music menuMusic;
 	Sound openingSound, blip;
 	double mouseX, mouseY;
 	
-	public MainMenu(int state){}
-
-	@Override
+	public MainMenu(int state)
+	{
+		
+	}
+	
 	public void init(GameContainer container, StateBasedGame sbg) throws SlickException 
 	{
-
+		Image background = new Image("res/MenuBG.png");
 	}
 
 	@Override
@@ -72,6 +75,9 @@ public class MainMenu extends BasicGameState
 	{
 		mouseX = Mouse.getX();
 		mouseY = Mouse.getY();
+		Input input = container.getInput();
+		
+		
 	}
 	
 	@Override

@@ -41,7 +41,7 @@ public class Cloud extends Entity
 	
 	public static void render(GameContainer container, StateBasedGame sbg, Graphics g) throws SlickException
 	{
-		cloud.draw(posX, posY);
+		cloudAnimation.draw(posX, posY);
 	}  
 
 	public static void update(GameContainer container, StateBasedGame sbg, int delta) throws SlickException 

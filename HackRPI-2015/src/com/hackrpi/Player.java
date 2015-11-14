@@ -32,7 +32,7 @@ public class Player extends Entity
 
 	public static void render(GameContainer container, StateBasedGame sbg, Graphics g) throws SlickException
 	{
-		player.draw(posX, posY);
+		playerAnimation.draw(posX, posY);
 		if(health <= 0)
 			sbg.enterState(Game.END);
 	}  
@@ -49,13 +49,23 @@ public class Player extends Entity
 		}
 		
 		if(input.isKeyDown(Input.KEY_S) || input.isKeyDown(Input.KEY_DOWN))
+		{
+			
 			posY += delta * speed;
+		}
 		if(input.isKeyDown(Input.KEY_W) || input.isKeyDown(Input.KEY_UP))
+		{
+			
 			posY -= delta * speed;
+		}
 		if(input.isKeyDown(Input.KEY_D) || input.isKeyDown(Input.KEY_RIGHT))
+		{
 			posX += delta * speed;
+		}
 		if(input.isKeyDown(Input.KEY_A) || input.isKeyDown(Input.KEY_LEFT))
+		{
 			posX-= delta * speed;
+		}
 		if(posY <= 0)
 			posY = 0;
 		else if(posY >= 680)

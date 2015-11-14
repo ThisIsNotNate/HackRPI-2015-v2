@@ -41,7 +41,7 @@ public class Tree extends Entity
 	
 	public static void render(GameContainer container, StateBasedGame sbg, Graphics g) throws SlickException
 	{
-		tree.draw(posX, posY);
+		treeAnimation.draw(posX, posY);
 	}  
 
 	public static void update(GameContainer container, StateBasedGame sbg, int delta) throws SlickException 

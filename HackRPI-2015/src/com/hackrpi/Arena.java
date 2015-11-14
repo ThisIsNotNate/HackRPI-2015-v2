@@ -29,6 +29,7 @@ public class Arena extends BasicGameState
 		
 		Player.render(container, sbg, g);
 		Enemy.render(container, sbg, g);
+		
 	}
 
 	@Override
@@ -40,7 +41,7 @@ public class Arena extends BasicGameState
 		
 		Input input = container.getInput();
 		if(input.isKeyDown(Input.KEY_ESCAPE))
-			sbg.enterState(Game.pause);
+			sbg.enterState(Game.PAUSE);
 	}	
 
 	@Override

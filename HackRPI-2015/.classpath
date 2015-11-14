@@ -24,5 +24,10 @@
 	<classpathentry kind="lib" path="slick/lib/slick-examples.jar"/>
 	<classpathentry kind="lib" path="slick/lib/slick.jar"/>
 	<classpathentry kind="lib" path="slick/lib/tinylinepp.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Slick2D">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="HackRPI-2015/slick/lib/natives-windows"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

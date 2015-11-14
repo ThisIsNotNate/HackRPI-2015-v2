@@ -11,7 +11,9 @@ import org.newdawn.slick.state.StateBasedGame;
 
 public class End extends BasicGameState
 {
-
+	
+	public End(int state){}
+	
 	public void init(GameContainer container, StateBasedGame sbg) throws SlickException 
 	{
 

@@ -1,14 +1,22 @@
 package com.hackrpi;
 
-public interface Enemy extends Entity{
-	private int castTime;
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.state.StateBasedGame;
+
+public class Enemy implements Entity
+{
+	private static int castTime;
 	
-	public static void init(int ct){
+	public static void init(int ct, GameContainer gc, StateBasedGame sbg, float x, float y, int h, int hMax)
+	{
+		Enemy enemy = new Entity(gc,sbg,x,y,h,hMax);
 		castTime = ct;
+		
+		
 	}
 	
-	public double getCastTime(){
-		return (double)castTime + Math.sin(Math.random());
+	public static double getCastTime(double factor){
+		return (double)castTime + Math.sin(factor * Math.random());
 	}
 	//test2
 }

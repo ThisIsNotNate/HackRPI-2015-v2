@@ -14,7 +14,7 @@ public class Projectile extends Entity
 	
 	public Projectile(int d, int s, int w, int l, Image im, float x, float y) throws SlickException
 	{
-		super(x,y,99999,99999);
+		super(x,y,99999,99999); //push
 		damage = d;
 		speed = s;
 		width = w;

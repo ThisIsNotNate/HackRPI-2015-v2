@@ -38,7 +38,6 @@ public class MainMenu extends BasicGameState
 			{
 				g.drawImage(new Image("res/PlayButton3.jpg"), 290, 190);
 				blip.play(1, .5f);
-				sbg.enterState(Game.upgrades);
 			}
 			else
 				g.drawImage(new Image("res/PlayButton2.jpg"), 290, 190);
@@ -50,7 +49,6 @@ public class MainMenu extends BasicGameState
 			{
 				g.drawImage(new Image("res/SettingsButton3.jpg"), 290, 350);
 				blip.play(1, .5f);
-				sbg.enterState(Game.settings);
 			}
 			else
 				g.drawImage(new Image("res/SettingsButton2.jpg"), 290, 350);

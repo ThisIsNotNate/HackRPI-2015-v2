@@ -19,12 +19,8 @@ public class MainMenu extends BasicGameState
 	Sound openingSound, blip;
 	Button playButton;
 	Button exitButton;
-	double mouseX, mouseY;
 	
-	public MainMenu(int state)
-	{
-		
-	}
+	public MainMenu(int state){}
 	
 	public void init(GameContainer container, StateBasedGame sbg) throws SlickException 
 	{
@@ -36,8 +32,6 @@ public class MainMenu extends BasicGameState
 
 	public void render(GameContainer container, StateBasedGame sbg, Graphics g) throws SlickException
 	{
-		Input input = container.getInput();
-		
 		g.drawImage(background, 0, 0);
 		playButton.render(g);
 		exitButton.render(g);
@@ -48,13 +42,10 @@ public class MainMenu extends BasicGameState
 		Input input = container.getInput();
 		
 		if(playButton.isClicked(input))
-		{
-			sbg.enterState(1);
-		}
+			sbg.enterState(Game.ARENA);
+		
 		if(exitButton.isClicked(input))
-		{
 			container.exit();
-		}
 	}
 	
 	public int getID() 

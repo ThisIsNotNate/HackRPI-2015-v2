@@ -24,8 +24,8 @@ public class Player extends Entity
 		healthMax = 100;
 		health = healthMax;
 		speed = .8f;
-		player = new SpriteSheet("res/BobRoss.png", x, y); //x and y are size of spreadsheet
-		playerAnimation = new Animation(player, 100);
+		//player = new SpriteSheet("res/BobRoss.png", x, y); //x and y are size of spreadsheet
+		//playerAnimation = new Animation(player, 100);
 
 	}
 

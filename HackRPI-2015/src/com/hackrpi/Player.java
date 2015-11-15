@@ -130,7 +130,7 @@ public class Player extends Entity
 						 projectiles.add(new Lightning(posX, posY));
 						 break;
 					case "KNIFE":
-						 projectiles.add(new ChiselProjectile(container, posX, posY));
+						 projectiles.add(new ChiselProjectile(container, posX + 45, posY + 45));
 						 break;
 				}
 			}

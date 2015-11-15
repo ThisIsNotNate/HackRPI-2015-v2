@@ -21,12 +21,13 @@ public class Arena extends BasicGameState
 	
 	public Arena(int state)
 	{
-		wave = 1;
+		wave = 0;
 	}
 	
 	@Override
 	public void init(GameContainer container, StateBasedGame sbg) throws SlickException 
 	{
+		wave++;
 		hud = new HUD();
 		time = 0;
 		background = new Image("res/gameBoard.png");
@@ -163,6 +164,14 @@ public class Arena extends BasicGameState
 				i++;
 			}
 		}
+		
+		i = 0;
+		while(i < Player.getPlayer().projectiles.size())
+		{
+			((ChiselProjectile)(Player.getPlayer().projectiles.get(i))).render(container, sbg, g);
+			i++;
+		}
+		
 		hud.render(container, sbg, g);
 	}
 
@@ -240,7 +249,10 @@ public class Arena extends BasicGameState
 		{
 			boolean removed = false;
 			if(Player.getPlayer().projectiles.get(i).time > 100)
+			{
+				removed = true;
 				Player.getPlayer().projectiles.remove(i);
+			}
 			else
 			{
 				int j = 0;
@@ -256,7 +268,11 @@ public class Arena extends BasicGameState
 						break;
 					}
 					else
+					{
+						if(Player.getPlayer().projectiles.get(i) instanceof ChiselProjectile)
+							((ChiselProjectile)(Player.getPlayer().projectiles.get(i))).update(container, sbg, delta);
 						j++;
+					}
 				}
 			}
 			if(!removed)
@@ -267,7 +283,7 @@ public class Arena extends BasicGameState
 	
 	public static void resetWave()
 	{
-		wave = 1;
+		wave = 0;
 	}
 
 	@Override

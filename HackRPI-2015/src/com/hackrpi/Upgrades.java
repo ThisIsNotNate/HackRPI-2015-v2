@@ -19,7 +19,7 @@ public class Upgrades extends BasicGameState
 	{
 		
 	}
-	
+	//test
 	public void init(GameContainer container, StateBasedGame sbg) throws SlickException 
 	{
 		background = new Image("res/upgradeMenu.png");

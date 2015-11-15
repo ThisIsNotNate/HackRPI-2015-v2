@@ -1,14 +1,21 @@
 package com.hackrpi;
 
 import java.awt.Rectangle;
+import java.util.ArrayList;
+
 import org.newdawn.slick.SlickException;
 
 public class Entity 
 {
-	float posY, posX, speed;
-	int health, healthMax, time, width, height; 
+	float posY, posX;
+	float speed;
+	int health, healthMax, time, width, height, damage;
+	ArrayList<Projectile> projectiles;
 	
-	public Entity(){}
+	public Entity()
+	{
+		projectiles = new ArrayList<Projectile>();
+	}
 	
 	public Entity(float x, float y, int hMax, int w, int he) throws SlickException
 	{
@@ -23,7 +30,7 @@ public class Entity
 	public boolean collides(Entity x)
 	{
 		Rectangle r1 = new Rectangle((int)posX, (int)posY, this.getWidth(), this.getHeight());
-		Rectangle r2 = new Rectangle((int)x.getPosX(), (int)x.getPosY(), x.getWidth(), x.getHeight());
+		Rectangle r2 = new Rectangle((int)x.posX, (int)x.posY, x.width, x.height);
 		return r1.intersects(r2);
 	}
 
@@ -45,6 +52,21 @@ public class Entity
 	public int getHeight()
 	{
 		return height;
+	}
+	
+	public int getHealth()
+	{
+		return health;
+	}
+	
+	public int getDamage()
+	{
+		return damage;
+	}
+	
+	public ArrayList<Projectile> getProjectiles()
+	{
+		return projectiles;
 	}
 	
 	public double getCastTime(int castTime, double factor)

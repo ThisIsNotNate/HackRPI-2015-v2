@@ -4,9 +4,9 @@ import org.newdawn.slick.SlickException;
 
 public class Projectile extends Entity
 {
-	private int damage, speed, width, length;
+	int damage;
 	
-	public Projectile(int d, int s, int w, int l, float x, float y) throws SlickException
+	public Projectile(int d, float s, int w, int l, float x, float y) throws SlickException
 	{
 		super(x,y,99999,w,l);
 		damage = d;
@@ -14,5 +14,4 @@ public class Projectile extends Entity
 	}
 	
 	public int getDamage(){return damage;}
-	
 }

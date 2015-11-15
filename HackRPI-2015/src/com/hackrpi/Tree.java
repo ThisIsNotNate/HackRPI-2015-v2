@@ -36,7 +36,7 @@ public class Tree extends Entity
 		time = 0;
 		health = 100;
 		speed = .08f;
-		damage = 10;
+		damage = 50;
 		width = 90;
 		height = 90;
 		tree = new SpriteSheet("res/treeSprite.png", 90, 90);
@@ -63,10 +63,9 @@ public class Tree extends Entity
 	{
 		time += delta;
 		
-		if(time > 100 && !isMoving)
+		if(!isMoving)
 		{
 			isMoving = true;
-			time = 0;
 			moving = treeMoving;
 			moving.update(delta);
 		}
@@ -76,9 +75,7 @@ public class Tree extends Entity
 			isMoving = false;
 			moving = treeAttacking;
 			moving.update(delta);
-		}
-			
-			
+		}		
 	}
 	
 	private void changeDuration(Animation an, int dur)	
@@ -86,5 +83,5 @@ public class Tree extends Entity
 		int c = an.getFrameCount();
 		for(int i = 0; i < c; i++)
 			an.setDuration(i, dur);
-	}	
+	}
 }

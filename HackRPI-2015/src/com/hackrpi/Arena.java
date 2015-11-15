@@ -231,7 +231,7 @@ public class Arena extends BasicGameState
 				}
 			}
 			
-			if(addedEnemies.get(i).collides(player))
+			if(addedEnemies.get(i) instanceof Tree && addedEnemies.get(i).collides(player) && !((Tree)(addedEnemies.get(i))).isMoving)
 				player.health = player.health - addedEnemies.get(i).damage;
 		}
 		int i = 0;

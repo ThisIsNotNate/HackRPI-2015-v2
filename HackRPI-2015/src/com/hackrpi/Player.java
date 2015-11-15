@@ -11,7 +11,7 @@ import org.newdawn.slick.state.StateBasedGame;
 
 
 public class Player extends Entity
-{//
+{
 	SpriteSheet sheet;
 	private Animation walkingUp, walkingDown, walkingLeft, walkingRight, walking;
 	boolean isWalking;

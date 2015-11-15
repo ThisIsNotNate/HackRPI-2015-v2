@@ -17,7 +17,7 @@ public class Pause extends BasicGameState
 	
 	public void init(GameContainer container, StateBasedGame sbg) throws SlickException 
 	{
-		exitButton = new Button("res/exitButton.png", 640 - 160, 360 - 45, 320, 90);
+		exitButton = new Button("res/returnButton.png", 640 - 160, 360 - 45, 320, 90);
 	}
 
 	@Override

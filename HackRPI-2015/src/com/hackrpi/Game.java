@@ -10,7 +10,7 @@ public class Game extends StateBasedGame
 	public static final int MAIN_MENU = 0;
 	public static final int ARENA = 1;
 	public static final int PAUSE = 2;
-	public static final int UPGRADES = 3;
+	public static final int UPGRADES = 3;	
 	public static final int END = 4;
 	public static final int CUTSCENE = 5;
 	

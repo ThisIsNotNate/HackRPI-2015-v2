@@ -23,7 +23,7 @@ public class End extends BasicGameState
 	{
 		death = new Image("res/DeathScreen.png");
 
-		exitButton = new Button("res/exitButton.png", 480, 480, 320, 90);
+		exitButton = new Button("res/returnToMainMenuButton.png", 480, 480, 320, 90);
 		played = false;
 	}
 

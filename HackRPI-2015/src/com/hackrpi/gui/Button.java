@@ -14,6 +14,7 @@ public class Button
 	private int x, y;
 	private int width, height;
 	private Sound menuSound, confirmSound;
+	private boolean buttonFlag;
 	
 	
 	public Button(String path, int x, int y, int width, int height) throws SlickException
@@ -25,6 +26,7 @@ public class Button
 		this.height = height;
 		menuSound = new Sound("res/menuButton.ogg");
 		confirmSound = new Sound("res/accept.ogg");
+		buttonFlag = true;
 	}
 	
 	public boolean isMouseWithinBounds(Input input)
@@ -32,22 +34,36 @@ public class Button
 		if(input.getMouseX() >= x && input.getMouseX() <= x + width
 		&& input.getMouseY() >= y && input.getMouseY() <= y + height)
 		{
-			menuSound.play();
+			if(buttonFlag)
+			{
+				menuSound.play();
+				buttonFlag = false;
+			}
 			return true;
 		}
 		else
+		{
+			buttonFlag = true;
 			return false;
+		}
 	}
 	
 	public boolean isClicked(Input input)
 	{
 		if(isMouseWithinBounds(input) && input.isMousePressed(Input.MOUSE_LEFT_BUTTON))
 		{
-			confirmSound.play();
+			if(buttonFlag)
+			{
+				confirmSound.play();
+				buttonFlag = false;
+			}
 			return true;
 		}
 		else
+		{
+			buttonFlag = true;
 			return false;
+		}
 	}
 	
 	public void render(Graphics g)

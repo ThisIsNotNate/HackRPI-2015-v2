@@ -41,11 +41,11 @@ public class Upgrades extends BasicGameState
 		
 		if(alizarinCrimsonUpgrade.isClicked(input))
 		{
-			
+			Player.getPlayer().addAbility("ALIZARIN_CRIMSON");
 		}
 		if(cadmiumYellowUpgrade.isClicked(input))
 		{
-			
+			Player.getPlayer().addAbility("CADMIUM_YELLOW");
 		}
 	}
 	

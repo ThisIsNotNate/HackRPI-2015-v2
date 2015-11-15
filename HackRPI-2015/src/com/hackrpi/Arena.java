@@ -12,7 +12,6 @@ import org.newdawn.slick.state.StateBasedGame;
 
 public class Arena extends BasicGameState
 {
-	Player player;
 	int time;
 	static int wave;
 	Image background;
@@ -34,7 +33,7 @@ public class Arena extends BasicGameState
 		enemies = new ArrayList<Entity>();
 		addedEnemies = new ArrayList<Entity>();
 		if(wave == 1)
-			player = new Player();
+			Player.getPlayer();
 		switch(wave)
 		{
 			case 5: enemies.add(new Cloud());
@@ -129,15 +128,14 @@ public class Arena extends BasicGameState
 		}
 	}
 
-	@Override
 	public void render(GameContainer container, StateBasedGame sbg, Graphics g) throws SlickException
 	{
 		if(enemies.size() == 0 && addedEnemies.size() == 0)
 			sbg.enterState(Game.UPGRADES);
-		g.drawImage(background, - player.getX(), -player.getY());
+		g.drawImage(background, -Player.getPlayer().getX(), -Player.getPlayer().getY());
 		g.drawString("Wave: " + wave, 1200, 10);
 		
-		player.render(container, sbg, g);
+		Player.getPlayer().render(container, sbg, g);
 		int i = 0; 
 		while(i < addedEnemies.size())
 		{
@@ -178,7 +176,7 @@ public class Arena extends BasicGameState
 			addedEnemies.add(enemies.get(enemies.size() - 1));
 			enemies.remove(enemies.size() - 1);
 		}
-		player.update(container, sbg, delta);
+		Player.getPlayer().update(container, sbg, delta);
 		
 		Input input = container.getInput();
 		if(input.isKeyPressed(Input.KEY_ESCAPE))
@@ -188,12 +186,12 @@ public class Arena extends BasicGameState
 		{			
 			if(addedEnemies.get(i) instanceof Tree)
 			{
-				if(addedEnemies.get(i).posX < player.posX)
+				if(addedEnemies.get(i).posX < Player.getPlayer().posX)
 					addedEnemies.get(i).posX += delta * addedEnemies.get(i).speed;
 				else
 					addedEnemies.get(i).posX -= delta * addedEnemies.get(i).speed;
 				
-				if(addedEnemies.get(i).posY < player.posY)
+				if(addedEnemies.get(i).posY < Player.getPlayer().posY)
 					addedEnemies.get(i).posY += delta * addedEnemies.get(i).speed;
 				else
 					addedEnemies.get(i).posY -= delta * addedEnemies.get(i).speed;
@@ -201,23 +199,23 @@ public class Arena extends BasicGameState
 			}
 			else
 			{
-				if(addedEnemies.get(i).posX < player.posX - 50)
+				if(addedEnemies.get(i).posX < Player.getPlayer().posX - 50)
 					addedEnemies.get(i).posX += delta * addedEnemies.get(i).speed;
-				else if(addedEnemies.get(i).posX >= player.posX + 50)
+				else if(addedEnemies.get(i).posX >= Player.getPlayer().posX + 50)
 					addedEnemies.get(i).posX -= delta * addedEnemies.get(i).speed;
 				
-				if(addedEnemies.get(i).posY < player.posY - 50)
+				if(addedEnemies.get(i).posY < Player.getPlayer().posY - 50)
 					addedEnemies.get(i).posY += delta * addedEnemies.get(i).speed;
-				else if(addedEnemies.get(i).posY >= player.posY + 50)
+				else if(addedEnemies.get(i).posY >= Player.getPlayer().posY + 50)
 					addedEnemies.get(i).posY -= delta * addedEnemies.get(i).speed;
 				((Cloud)addedEnemies.get(i)).update(container, sbg, delta);
 				
 				int j = 0;
 				while(j < addedEnemies.get(i).projectiles.size())
 				{
-					if(addedEnemies.get(i).projectiles.get(j).collides(player))
+					if(addedEnemies.get(i).projectiles.get(j).collides(Player.getPlayer()))
 					{
-						player.health = player.health - addedEnemies.get(i).projectiles.get(j).damage;
+						Player.getPlayer().health = Player.getPlayer().health - addedEnemies.get(i).projectiles.get(j).damage;
 						addedEnemies.get(i).projectiles.remove(j);
 					}
 					else
@@ -231,22 +229,22 @@ public class Arena extends BasicGameState
 				}
 			}
 			
-			if(addedEnemies.get(i).collides(player))
-				player.health = player.health - addedEnemies.get(i).damage;
+			if(addedEnemies.get(i).collides(Player.getPlayer()))
+				Player.getPlayer().health = Player.getPlayer().health - addedEnemies.get(i).damage;
 		}
 		int i = 0;
-		while(i < player.projectiles.size())
+		while(i < Player.getPlayer().projectiles.size())
 		{
 			boolean removed = false;
 			int j = 0;
 			while(j < addedEnemies.size())
 			{
-				if(player.projectiles.get(i).collides(addedEnemies.get(j)))
+				if(Player.getPlayer().projectiles.get(i).collides(addedEnemies.get(j)))
 				{
-					addedEnemies.get(j).health = addedEnemies.get(j).health - player.projectiles.get(i).damage;
+					addedEnemies.get(j).health = addedEnemies.get(j).health - Player.getPlayer().projectiles.get(i).damage;
 					if(addedEnemies.get(j).health <= 0)
 						addedEnemies.remove(j);
-					player.projectiles.remove(i);
+					Player.getPlayer().projectiles.remove(i);
 					removed = true;
 					break;
 				}
@@ -256,7 +254,7 @@ public class Arena extends BasicGameState
 			if(!removed)
 				i++;
 		}
-		//hud.update(container, sbg, delta, player);
+		//hud.update(container, sbg, delta, Player.getPlayer());
 	}	
 
 	@Override

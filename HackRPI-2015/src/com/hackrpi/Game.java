@@ -23,7 +23,7 @@ public class Game extends StateBasedGame
 		addState(new End(END));
 	}
 
-	public void initStatesList(GameContainer gc) throws SlickException{}
+	public void initStatesList(GameContainer gc) throws SlickException {}
 	
 	public static void main(String[] args)
 	{

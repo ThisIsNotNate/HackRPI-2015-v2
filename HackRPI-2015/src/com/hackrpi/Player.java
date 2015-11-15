@@ -1,5 +1,7 @@
 package com.hackrpi;
 
+import java.util.HashMap;
+
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -12,11 +14,35 @@ import org.newdawn.slick.state.StateBasedGame;
 
 public class Player extends Entity
 {
-	SpriteSheet sheet;
+	private static Player player = null;
+	
+	public static Player getPlayer() throws SlickException
+	{
+		if(player == null)
+		{
+			player = new Player();
+		}
+		return player;
+	}
+	
+	public static void resetPlayer()
+	{
+		player = null;
+	}
+	
+	private HashMap<Integer,String> abilities;
+	
+	private SpriteSheet sheet;
 	private Animation walkingUp, walkingDown, walkingLeft, walkingRight, walking;
 	
-	public Player() throws SlickException
+	private Player() throws SlickException
 	{
+		abilities = new HashMap<Integer,String>();
+		abilities.put(1, "KNIFE");
+		abilities.put(2, null);
+		abilities.put(3, null);
+		abilities.put(4, null);
+		
 		posX = 595f;
 		posY = 315f;
 		width = 90;
@@ -110,6 +136,21 @@ public class Player extends Entity
 			an.setDuration(i, dur);
 	}	
 	
+	public void addAbility(String ability)
+	{
+		switch(ability)
+		{
+		case "ALIZARIN_CRIMSON":
+			abilities.remove(1);
+			abilities.put(1, "ALIZARIN_CRIMSON");
+			break;
+		case "CADMIUM_YELLOW":
+			abilities.remove(1);
+			abilities.put(1, "CADMIUM_YELLOW");
+			break;
+		}
+	}
+	
 	public float getX() { return posX; }	
 	
 	public float getY() { return posY; }	
@@ -119,6 +160,6 @@ public class Player extends Entity
 	public int getHealthMax() { return healthMax; }
 	
 	public void setHealth(int h) { health = h; }
+	
+	public HashMap<Integer,String> getAbilities() { return abilities; }
 }
-
-

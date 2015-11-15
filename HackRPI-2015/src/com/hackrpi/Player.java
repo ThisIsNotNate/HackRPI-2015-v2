@@ -34,6 +34,7 @@ public class Player extends Entity
 	
 	private SpriteSheet sheet;
 	private Animation walkingUp, walkingDown, walkingLeft, walkingRight, walking;
+	private Weapon currentWeapon;
 	
 	private Player() throws SlickException
 	{
@@ -42,6 +43,8 @@ public class Player extends Entity
 		abilities.put(2, null);
 		abilities.put(3, null);
 		abilities.put(4, null);
+		
+		currentWeapon = Weapon.KNIFE;
 		
 		posX = 595f;
 		posY = 315f;

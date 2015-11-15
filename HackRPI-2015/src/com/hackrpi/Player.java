@@ -200,12 +200,12 @@ public class Player extends Entity
 		switch(ability)
 		{
 			case "ALIZARIN_CRIMSON":
-				abilities.remove(1);
-				abilities.put(1, "ALIZARIN_CRIMSON");
+				abilities.remove(2);
+				abilities.put(2, "ALIZARIN_CRIMSON");
 				break;
 			case "CADMIUM_YELLOW":
-				abilities.remove(1);
-				abilities.put(1, "CADMIUM_YELLOW");
+				abilities.remove(2);
+				abilities.put(2, "CADMIUM_YELLOW");
 				break;
 		}
 	}

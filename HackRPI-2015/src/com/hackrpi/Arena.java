@@ -14,7 +14,7 @@ public class Arena extends BasicGameState
 {
 	int time;
 	static int wave;
-	Image background;
+	Image background, healthBar, healthBarCopy;
 	HUD hud;
 	ArrayList<Entity> enemies;
 	ArrayList<Entity> addedEnemies;
@@ -31,6 +31,8 @@ public class Arena extends BasicGameState
 		hud = new HUD();
 		time = 0;
 		background = new Image("res/gameBoard.png");
+		healthBar = new Image("res/healthBar.png");
+		healthBarCopy = healthBar.copy();
 		enemies = new ArrayList<Entity>();
 		addedEnemies = new ArrayList<Entity>();
 		if(wave == 1)
@@ -173,6 +175,7 @@ public class Arena extends BasicGameState
 		}
 		
 		hud.render(container, sbg, g);
+		g.drawImage(healthBarCopy, 15 + 3, 65 + 3);
 	}
 
 	@Override
@@ -283,6 +286,13 @@ public class Arena extends BasicGameState
 				i++;
 		}
 		hud.update(container, sbg, delta, Player.getPlayer());
+		healthBarCopy = updateHealthBar(Player.getPlayer().health);
+	}
+	
+	private Image updateHealthBar(int health)
+	{
+		double factor = health / 100.0;
+		return healthBar.getSubImage(0, 0, (int)(healthBar.getWidth() * factor), healthBar.getHeight());
 	}
 	
 	public static void resetWave()

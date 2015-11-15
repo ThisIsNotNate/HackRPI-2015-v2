@@ -36,6 +36,8 @@ public class Player extends Entity
 	private Animation walkingUp, walkingDown, walkingLeft, walkingRight, walking;
 	private Animation attackingUp, attackingDown, attackingLeft, attackingRight, attacking;
 	private Weapon currentWeapon;
+	private boolean isAttacking;
+	private int direction;
 	
 	private Player() throws SlickException
 	{
@@ -52,9 +54,10 @@ public class Player extends Entity
 		width = 90;
 		height = 90;
 		time = 1000;
-		healthMax = 100;
+		healthMax = 9999999;
 		health = healthMax;
 		speed = .3f;
+		direction = 2;
 		sheet = new SpriteSheet("res/BobRoss.png", 90, 90);
 		
 		int[] duration = {1, 1, 1};
@@ -105,9 +108,21 @@ public class Player extends Entity
 		
 		Input input = container.getInput();
 		
-		if(input.isMouseButtonDown(Input.MOUSE_LEFT_BUTTON))
+		if(input.isMousePressed(Input.MOUSE_LEFT_BUTTON))
 		{
-			if(time > 1000)
+			switch(direction)
+			{
+				case 3: walking = attackingUp;
+						break;
+				case 2:	walking = attackingDown;
+						break;
+				case 1: walking = attackingLeft;
+						break;
+				case 0:	walking = attackingRight;
+						break;
+			}
+			isAttacking = true;
+			if(time > 100)
 			{
 				time = 0;
 				switch(abilities.get(1))
@@ -127,28 +142,45 @@ public class Player extends Entity
 				
 		if(input.isKeyDown(Input.KEY_D) || input.isKeyDown(Input.KEY_RIGHT))
 		{
-			walking = walkingRight;
+			direction = 0;
+			if(!isAttacking)
+				walking = walkingRight;
+			else
+				walking = attackingRight;
 			walking.update(delta);
 			posX += delta * speed;
 		}
 		if(input.isKeyDown(Input.KEY_A) || input.isKeyDown(Input.KEY_LEFT))
 		{
-			walking = walkingLeft;
+			direction = 1;
+			if(!isAttacking)
+				walking = walkingLeft;
+			else
+				walking = attackingLeft;
 			walking.update(delta);
 			posX-= delta * speed;
 		}
 		if(input.isKeyDown(Input.KEY_S) || input.isKeyDown(Input.KEY_DOWN))
 		{
-			walking = walkingDown;
+			direction = 2;
+			if(!isAttacking)
+				walking = walkingDown;
+			else
+				walking = attackingDown;
 			walking.update(delta);
 			posY += delta * speed;
 		}
 		if(input.isKeyDown(Input.KEY_W) || input.isKeyDown(Input.KEY_UP))
 		{
-			walking = walkingUp;
+			direction = 3;
+			if(!isAttacking)
+				walking = walkingUp;
+			else
+				walking = attackingUp;
 			walking.update(delta);
 			posY -= delta * speed;
 		}
+		isAttacking = false;
 		
 		if(posY <= 0)
 			posY = 0;

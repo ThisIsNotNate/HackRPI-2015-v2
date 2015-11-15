@@ -36,6 +36,8 @@ public class Cloud extends Entity
 		speed = .08f;
 		damage = 20;
 		time = 0;
+		width = 100;
+		height = 100;
 		cloud = new SpriteSheet("res/CloudSS_100x100.png", 100, 100);
 		cloudAnimation = new Animation(cloud, 100);
 	}
@@ -49,7 +51,7 @@ public class Cloud extends Entity
 	{
 		time += delta;
 		
-		if(time > 1000)
+		if(time > 2000)
 		{
 			time = 0;
 			projectiles.add(new Lightning(posX + 75, posY + 75));

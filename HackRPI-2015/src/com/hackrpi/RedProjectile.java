@@ -16,7 +16,7 @@ public class RedProjectile extends Projectile
 	{
 		super(30, 10f, 25, 25, x, y);
 		time = 0;
-		image = new Image("res/redProj");
+		image = new Image("res/RedBall.png");
 		Input input = container.getInput();
 		rad = (float)(Math.atan2(input.getMouseX() - x, y - input.getMouseY()));
 	}

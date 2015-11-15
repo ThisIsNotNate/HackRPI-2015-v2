@@ -19,7 +19,7 @@ public class End extends BasicGameState
 	
 	public void init(GameContainer container, StateBasedGame sbg) throws SlickException
 	{
-		exitButton = new Button("res/exitButton.png", 480, 480, 320, 90);
+		exitButton = new Button("res/return.png", 480, 480, 320, 90);
 		played = false;
 	}
 

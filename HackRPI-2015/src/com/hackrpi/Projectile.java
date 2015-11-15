@@ -5,6 +5,7 @@ import org.newdawn.slick.SlickException;
 public class Projectile extends Entity
 {
 	int damage;
+	//
 	
 	public Projectile(int d, float s, int w, int l, float x, float y) throws SlickException
 	{

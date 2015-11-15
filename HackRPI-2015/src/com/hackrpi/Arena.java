@@ -229,13 +229,11 @@ public class Arena extends BasicGameState
 				}
 			}
 			
-<<<<<<< HEAD
 			if(addedEnemies.get(i).collides(Player.getPlayer()))
-				Player.getPlayer().health = Player.getPlayer().health - addedEnemies.get(i).damage;
-=======
-			if(addedEnemies.get(i) instanceof Tree && addedEnemies.get(i).collides(player) && !((Tree)(addedEnemies.get(i))).isMoving)
-				player.health = player.health - addedEnemies.get(i).damage;
->>>>>>> branch 'master' of https://github.com/ThisIsNotNate/HackRPI-2015-v2
+			{
+				if(addedEnemies.get(i) instanceof Tree && addedEnemies.get(i).collides(Player.getPlayer()) && !((Tree)(addedEnemies.get(i))).isMoving)
+					Player.getPlayer().health = Player.getPlayer().health - addedEnemies.get(i).damage;
+			}
 		}
 		int i = 0;
 		while(i < Player.getPlayer().projectiles.size())

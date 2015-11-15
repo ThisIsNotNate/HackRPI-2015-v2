@@ -65,19 +65,7 @@ public class Player extends Entity
 		{
 			
 		}
-		
-		if(input.isKeyDown(Input.KEY_S) || input.isKeyDown(Input.KEY_DOWN))
-		{
-			walking = walkingDown;
-			walking.update(delta);
-			posY += delta * speed;
-		}
-		if(input.isKeyDown(Input.KEY_W) || input.isKeyDown(Input.KEY_UP))
-		{
-			walking = walkingUp;
-			walking.update(delta);
-			posY -= delta * speed;
-		}
+				
 		if(input.isKeyDown(Input.KEY_D) || input.isKeyDown(Input.KEY_RIGHT))
 		{
 			walking = walkingRight;
@@ -90,6 +78,19 @@ public class Player extends Entity
 			walking.update(delta);
 			posX-= delta * speed;
 		}
+		if(input.isKeyDown(Input.KEY_S) || input.isKeyDown(Input.KEY_DOWN))
+		{
+			walking = walkingDown;
+			walking.update(delta);
+			posY += delta * speed;
+		}
+		if(input.isKeyDown(Input.KEY_W) || input.isKeyDown(Input.KEY_UP))
+		{
+			walking = walkingUp;
+			walking.update(delta);
+			posY -= delta * speed;
+		}
+		
 		if(posY <= 0)
 			posY = 0;
 		else if(posY >= 680)

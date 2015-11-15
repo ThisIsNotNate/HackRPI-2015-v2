@@ -135,7 +135,10 @@ public class Arena extends BasicGameState
 	public void render(GameContainer container, StateBasedGame sbg, Graphics g) throws SlickException
 	{
 		if(enemies.size() == 0 && addedEnemies.size() == 0)
+		{
+			Player.getPlayer().setHealth(100);
 			sbg.enterState(Game.UPGRADES);
+		}
 		g.drawImage(background, -Player.getPlayer().getX(), -Player.getPlayer().getY());
 		g.drawString("Wave: " + wave, 1200, 10);
 		

@@ -13,12 +13,12 @@ public class Lightning extends Projectile
 	
 	public Lightning(float x, float y) throws SlickException
 	{
-		super(50, .2f, 25, 25, x, y);
+		super(50, .3f, 25, 25, x, y);
 		time = 0;
 		image = new Image("res/lightningBolt.png");
 		Player p = Player.getPlayer();
-		pX = x-p.getPosX();
-		pY = y-p.getPosY();
+		pX = x - p.getPosX();
+		pY = y - p.getPosY();
 		
 	}
 	
@@ -31,14 +31,14 @@ public class Lightning extends Projectile
 	{
 		time += delta;
 		
-		if(pX <0)
+		if(pX < 0)
 			posX += delta * speed;
 		else
-			posX -= delta*speed;
+			posX -= delta * speed;
 		if(pY < 0)
 			posY += delta * speed;
 		else
-			posY -= delta*speed;
+			posY -= delta * speed;
 		
 	}
 }

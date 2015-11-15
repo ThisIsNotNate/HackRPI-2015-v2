@@ -50,7 +50,7 @@ public class Player extends Entity
 	public void render(GameContainer container, StateBasedGame sbg, Graphics g) throws SlickException
 	{
 		if(isWalking)
-			walking.draw(595, 315);
+			walking.draw(posX, posY);
 		if(health <= 0)
 			sbg.enterState(Game.END);
 	}  

@@ -54,7 +54,7 @@ public class Player extends Entity
 		width = 90;
 		height = 90;
 		time = 1000;
-		healthMax = 9999999;
+		healthMax = 100;
 		health = healthMax;
 		speed = .3f;
 		direction = 2;

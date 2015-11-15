@@ -260,7 +260,12 @@ public class Arena extends BasicGameState
 				i++;
 		}
 		hud.update(container, sbg, delta, Player.getPlayer());
-	}	
+	}
+	
+	public static void resetWave()
+	{
+		wave = 1;
+	}
 
 	@Override
 	public int getID() 

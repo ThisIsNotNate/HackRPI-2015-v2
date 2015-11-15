@@ -13,7 +13,6 @@ public class HUD
 	HashMap<Integer,String> abilities;
 	
 	Image lockedAbility;
-	
 	Image knife;
 	Image alizarinCrimson;
 	Image cadmiumYellow;

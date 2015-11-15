@@ -11,7 +11,8 @@ public class ChiselProjectile extends Projectile
 	private Image image;
 	private SpriteSheet ss;
 	private Animation anim;
-	public ChiselProjectile(int d, int s, int w, int l, Image im, float x, float y) throws SlickException {
+	public ChiselProjectile(int d, int s, int w, int l, Image im, float x, float y) throws SlickException
+	{
 		super(50, 1000, 30, 45, (new Player()).getPosX(), (new Player()).getPosY());
 		image = new Image("res/chiselProj");
 		ss = new SpriteSheet(image, 0, 0);

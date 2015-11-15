@@ -1,27 +1,21 @@
 package com.hackrpi;
 
 import java.awt.Rectangle;
-
-import org.newdawn.slick.Animation;
-import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
-import org.newdawn.slick.SpriteSheet;
-import org.newdawn.slick.state.StateBasedGame;
 
 public class Entity 
 {
-	float posY, posX;
+	float posY, posX, speed;
 	int health, healthMax, time, width, height; 
 	
 	public Entity(){}
 	
-	public Entity(float x, float y, int h, int hMax, int w, int he) throws SlickException
+	public Entity(float x, float y, int hMax, int w, int he) throws SlickException
 	{
 		posX = x;
 		posY = y;
-		health = h;
-		healthMax = hMax;	
+		healthMax = hMax;
+		health = healthMax;
 		width = w;
 		height = he;
 	}

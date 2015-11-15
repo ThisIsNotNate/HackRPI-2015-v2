@@ -14,5 +14,4 @@ public class Projectile extends Entity
 	}
 	
 	public int getDamage(){return damage;}
-	
 }

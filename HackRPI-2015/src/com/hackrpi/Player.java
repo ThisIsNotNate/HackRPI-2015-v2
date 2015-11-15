@@ -44,7 +44,6 @@ public class Player extends Entity
 		changeDuration(walkingRight, 150);
 		walking = new Animation(walkUp, duration, false);
 		changeDuration(walking, 150);
-		
 	}
 
 	public void render(GameContainer container, StateBasedGame sbg, Graphics g) throws SlickException

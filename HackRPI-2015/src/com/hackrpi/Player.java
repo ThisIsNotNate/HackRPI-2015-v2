@@ -19,9 +19,8 @@ public class Player extends Entity
 	public static Player getPlayer() throws SlickException
 	{
 		if(player == null)
-		{
 			player = new Player();
-		}
+		
 		return player;
 	}
 	

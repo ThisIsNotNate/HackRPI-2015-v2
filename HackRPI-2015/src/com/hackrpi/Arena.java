@@ -241,20 +241,23 @@ public class Arena extends BasicGameState
 			boolean removed = false;
 			if(Player.getPlayer().projectiles.get(i).time > 100)
 				Player.getPlayer().projectiles.remove(i);
-			int j = 0;
-			while(j < addedEnemies.size())
+			else
 			{
-				if(Player.getPlayer().projectiles.get(i).collides(addedEnemies.get(j)))
+				int j = 0;
+				while(j < addedEnemies.size())
 				{
-					addedEnemies.get(j).health = addedEnemies.get(j).health - Player.getPlayer().projectiles.get(i).damage;
-					if(addedEnemies.get(j).health <= 0)
-						addedEnemies.remove(j);
-					Player.getPlayer().projectiles.remove(i);
-					removed = true;
-					break;
+					if(Player.getPlayer().projectiles.get(i).collides(addedEnemies.get(j)))
+					{
+						addedEnemies.get(j).health = addedEnemies.get(j).health - Player.getPlayer().projectiles.get(i).damage;
+						if(addedEnemies.get(j).health <= 0)
+							addedEnemies.remove(j);
+						Player.getPlayer().projectiles.remove(i);
+						removed = true;
+						break;
+					}
+					else
+						j++;
 				}
-				else
-					j++;
 			}
 			if(!removed)
 				i++;

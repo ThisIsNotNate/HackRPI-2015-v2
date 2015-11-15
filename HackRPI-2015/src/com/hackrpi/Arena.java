@@ -129,7 +129,7 @@ public class Arena extends BasicGameState
 				   break;
 			
 			default:
-		}
+		}//asdf
 	}
 
 	public void render(GameContainer container, StateBasedGame sbg, Graphics g) throws SlickException

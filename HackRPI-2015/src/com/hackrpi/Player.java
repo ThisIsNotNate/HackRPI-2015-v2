@@ -185,7 +185,7 @@ public class Player extends Entity
 		if(posX <= 0)
 			posX = 0;
 		else if(posX >= 1250)
-			posX = 1250;
+			posX = 1250;		
 	}
 	
 	private void changeDuration(Animation an, int dur)	

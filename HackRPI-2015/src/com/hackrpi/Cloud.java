@@ -54,7 +54,7 @@ public class Cloud extends Entity
 		if(time > 2000)
 		{
 			time = 0;
-			projectiles.add(new Lightning(posX + 75, posY + 75));
+			projectiles.add(new Lightning(1, container, posX + 75, posY + 75));
 		}
 			
 		cloudAnimation.update(delta);

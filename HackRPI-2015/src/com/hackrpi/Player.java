@@ -124,10 +124,10 @@ public class Player extends Entity
 				switch(abilities.get(1))
 				{
 					case "ALIZARIN_CRIMSON":
-						 projectiles.add(new RedProjectile(posX, posY));
+						 projectiles.add(new RedProjectile(container, posX + 45, posY + 45));
 						 break;
 					case "CADMIUM_YELLOW":
-						 projectiles.add(new Lightning(posX, posY));
+						 projectiles.add(new Lightning(2, container, posX + 45, posY + 45));
 						 break;
 					case "KNIFE":
 						 projectiles.add(new ChiselProjectile(container, posX + 45, posY + 45));

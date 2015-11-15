@@ -20,10 +20,12 @@ public class Player extends Entity
 	{
 		posX = 50f;
 		posY = 50f;
+		width = 90;
+		height = 90;
 		time = 0;
 		healthMax = 100;
 		health = healthMax;
-		speed = .5f;
+		speed = .3f;
 		sheet = new SpriteSheet("res/BobRoss.png", 90, 90);
 		isWalking = false;
 		
@@ -119,12 +121,6 @@ public class Player extends Entity
 	public int getHealthMax() { return healthMax; }
 	
 	public void setHealth(int h) { health = h; }
-	
-	public void setHealthMax(int h)
-	{
-		healthMax = h;
-		health = healthMax;
-	}	
 }
 
 

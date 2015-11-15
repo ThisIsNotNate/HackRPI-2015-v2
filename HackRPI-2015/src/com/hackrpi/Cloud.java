@@ -32,10 +32,11 @@ public class Cloud extends Entity
 		}
 		
 		time = 0;
-		healthMax = 100;
-		health = healthMax;
-		speed = .8f;
-		cloud = new SpriteSheet("res/Cloud.png", 90, 90);
+		health = 100;
+		speed = .08f;
+		damage = 20;
+		time = 0;
+		cloud = new SpriteSheet("res/CloudSS_100x100.png", 100, 100);
 		cloudAnimation = new Animation(cloud, 100);
 	}
 	
@@ -48,15 +49,12 @@ public class Cloud extends Entity
 	{
 		time += delta;
 		
-		if(posX < Player.getX())
-			posX += delta * speed;
-		else
-			posX -= delta * speed;
-		if(posY < Player.getY())
-			posY += delta * speed;
-		else
-			posY -= delta * speed;
+		if(time > 1000)
+		{
+			time = 0;
+			projectiles.add(new Lightning(posX + 75, posY + 75));
+		}
+			
 		cloudAnimation.update(delta);
-		
 	}
 }

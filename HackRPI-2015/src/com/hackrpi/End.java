@@ -20,7 +20,6 @@ public class End extends BasicGameState
 	@Override
 	public void render(GameContainer container, StateBasedGame sbg, Graphics g) throws SlickException
 	{
-		Input input = container.getInput();
 		
 	}
 

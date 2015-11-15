@@ -25,11 +25,11 @@ public class Game extends StateBasedGame
 
 	public void initStatesList(GameContainer gc) throws SlickException
 	{
-		this.getState(MAIN_MENU).init(gc, this);
-		this.getState(ARENA).init(gc, this);
-		this.getState(PAUSE).init(gc, this);
-		this.getState(UPGRADES).init(gc, this);
-		this.getState(END).init(gc, this);
+//		this.getState(MAIN_MENU).init(gc, this);
+//		this.getState(ARENA).init(gc, this);
+//		this.getState(PAUSE).init(gc, this);
+//		this.getState(UPGRADES).init(gc, this);
+//		this.getState(END).init(gc, this);
 	}
 	
 	public static void main(String[] args)

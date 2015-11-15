@@ -29,7 +29,7 @@ public class Entity
 	
 	public boolean collides(Entity x)
 	{
-		Rectangle r1 = new Rectangle((int)posX, (int)posY, this.getWidth(), this.getHeight());
+		Rectangle r1 = new Rectangle((int)posX, (int)posY, this.width, this.height);
 		Rectangle r2 = new Rectangle((int)x.posX, (int)x.posY, x.width, x.height);
 		return r1.intersects(r2);
 	}

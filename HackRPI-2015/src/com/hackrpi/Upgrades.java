@@ -1,6 +1,6 @@
 package com.hackrpi;
 
-import com.hackrpi.gui.Button;;
+import com.hackrpi.gui.Button;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;

@@ -14,7 +14,6 @@ public class Player extends Entity
 {
 	SpriteSheet sheet;
 	private Animation walkingUp, walkingDown, walkingLeft, walkingRight, walking;
-	boolean isWalking;
 	
 	public Player() throws SlickException
 	{
@@ -22,12 +21,11 @@ public class Player extends Entity
 		posY = 315f;
 		width = 90;
 		height = 90;
-		time = 0;
+		time = 1000;
 		healthMax = 100;
 		health = healthMax;
 		speed = .3f;
 		sheet = new SpriteSheet("res/BobRoss.png", 90, 90);
-		isWalking = false;
 		
 		int[] duration = {1, 1, 1};
 		
@@ -63,7 +61,11 @@ public class Player extends Entity
 		
 		if(input.isMouseButtonDown(Input.MOUSE_LEFT_BUTTON))
 		{
-			
+			if(time > 1000)
+			{
+				time = 0;
+				//projectiles.add(new RedProjectile(posX, posY));
+			}
 		}
 				
 		if(input.isKeyDown(Input.KEY_D) || input.isKeyDown(Input.KEY_RIGHT))

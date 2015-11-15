@@ -234,6 +234,28 @@ public class Arena extends BasicGameState
 			if(addedEnemies.get(i).collides(player))
 				player.health = player.health - addedEnemies.get(i).damage;
 		}
+		int i = 0;
+		while(i < player.projectiles.size())
+		{
+			boolean removed = false;
+			int j = 0;
+			while(j < addedEnemies.size())
+			{
+				if(player.projectiles.get(i).collides(addedEnemies.get(j)))
+				{
+					addedEnemies.get(j).health = addedEnemies.get(j).health - player.projectiles.get(i).damage;
+					if(addedEnemies.get(j).health <= 0)
+						addedEnemies.remove(j);
+					player.projectiles.remove(i);
+					removed = true;
+					break;
+				}
+				else
+					j++;
+			}
+			if(!removed)
+				i++;
+		}
 		//hud.update(container, sbg, delta, player);
 	}	
 

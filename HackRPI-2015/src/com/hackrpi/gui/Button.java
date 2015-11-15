@@ -52,18 +52,11 @@ public class Button
 	{
 		if(isMouseWithinBounds(input) && input.isMousePressed(Input.MOUSE_LEFT_BUTTON))
 		{
-			if(buttonFlag)
-			{
-				confirmSound.play();
-				buttonFlag = false;
-			}
+			confirmSound.play();
 			return true;
 		}
 		else
-		{
-			buttonFlag = true;
 			return false;
-		}
 	}
 	
 	public void render(Graphics g)

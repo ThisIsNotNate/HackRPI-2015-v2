@@ -170,7 +170,10 @@ public class Arena extends BasicGameState
 		i = 0;
 		while(i < Player.getPlayer().projectiles.size())
 		{
-			((ChiselProjectile)(Player.getPlayer().projectiles.get(i))).render(container, sbg, g);
+			if(Player.getPlayer().projectiles.get(i) instanceof RedProjectile)
+				((RedProjectile)(Player.getPlayer().projectiles.get(i))).render(container, sbg, g);
+			else if(Player.getPlayer().projectiles.get(i) instanceof Lightning)
+				((Lightning)(Player.getPlayer().projectiles.get(i))).render(container, sbg, g);
 			i++;
 		}
 		

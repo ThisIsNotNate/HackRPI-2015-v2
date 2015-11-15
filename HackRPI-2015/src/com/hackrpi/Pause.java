@@ -34,7 +34,7 @@ public class Pause extends BasicGameState
 			sbg.enterState(Game.ARENA);
 		
 		if(exitButton.isClicked(input))
-			container.exit();
+			sbg.enterState(Game.MAIN_MENU);
 	}
 	
 	@Override

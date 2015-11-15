@@ -23,14 +23,7 @@ public class Game extends StateBasedGame
 		addState(new End(END));
 	}
 
-	public void initStatesList(GameContainer gc) throws SlickException
-	{
-		this.getState(MAIN_MENU).init(gc, this);
-		this.getState(ARENA).init(gc, this);
-		this.getState(PAUSE).init(gc, this);
-		this.getState(UPGRADES).init(gc, this);
-		this.getState(END).init(gc, this);
-	}
+	public void initStatesList(GameContainer gc) throws SlickException{}
 	
 	public static void main(String[] args)
 	{
@@ -38,6 +31,7 @@ public class Game extends StateBasedGame
 		try
 		{
 			appgc = new AppGameContainer(new Game("Bob Ross Siege"), 1280, 720, false);
+			appgc.setIcon("res/icon.jpg");
 			appgc.setTargetFrameRate(60);
 			appgc.start();
 		}

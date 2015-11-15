@@ -12,6 +12,7 @@ import com.hackrpi.gui.Button;
 public class Pause extends BasicGameState
 {
 	Button exitButton;
+	Button returnToMainMenuButton;
 	
 	public Pause(int state){}
 	

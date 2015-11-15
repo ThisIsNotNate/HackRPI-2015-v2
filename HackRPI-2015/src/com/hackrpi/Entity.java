@@ -11,7 +11,7 @@ import org.newdawn.slick.state.StateBasedGame;
 
 public class Entity 
 {
-	float posY, posX, speed;
+	float posY, posX;
 	int health, healthMax, time, width, height; 
 	
 	public Entity(){}

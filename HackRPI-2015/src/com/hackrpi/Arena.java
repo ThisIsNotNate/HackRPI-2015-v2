@@ -1,8 +1,5 @@
 package com.hackrpi;
 
-
-
-
 import java.util.ArrayList;
 
 import org.newdawn.slick.GameContainer;

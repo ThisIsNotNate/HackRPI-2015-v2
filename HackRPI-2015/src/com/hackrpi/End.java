@@ -2,6 +2,7 @@ package com.hackrpi;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.Sound;
@@ -12,6 +13,7 @@ import com.hackrpi.gui.Button;
 
 public class End extends BasicGameState
 {
+	Image death;
 	Button exitButton;
 	Sound spooky;
 	private boolean played = false;
@@ -19,6 +21,8 @@ public class End extends BasicGameState
 	
 	public void init(GameContainer container, StateBasedGame sbg) throws SlickException
 	{
+		death = new Image("res/DeathScreen.png");
+
 		exitButton = new Button("res/exitButton.png", 480, 480, 320, 90);
 		played = false;
 	}
@@ -26,6 +30,7 @@ public class End extends BasicGameState
 	@Override
 	public void render(GameContainer container, StateBasedGame sbg, Graphics g) throws SlickException
 	{
+		death.draw(0,0);
 		exitButton.render(g);
 	}
 

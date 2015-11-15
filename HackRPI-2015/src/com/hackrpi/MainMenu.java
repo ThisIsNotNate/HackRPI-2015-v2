@@ -28,8 +28,8 @@ public class MainMenu extends BasicGameState
 		openingSound = new Sound("res/HappyLittleTreesFinal.wav");
 		openingSound.play();
 		
-		playButton = new Button("res/playButton.png", 1280/4 * 2, 720/8 * 2, 320, 90);
-		exitButton = new Button("res/exitButton.png", 1280/4 * 2, 720/8 * 4, 320, 90);
+		playButton = new Button("res/playButton.png", 480, 300, 320, 90);
+		exitButton = new Button("res/exitButton.png", 480, 480, 320, 90);
 	}
 
 	public void render(GameContainer container, StateBasedGame sbg, Graphics g) throws SlickException

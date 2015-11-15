@@ -9,7 +9,7 @@ import org.newdawn.slick.state.StateBasedGame;
 public class Lightning extends Projectile
 {
 	private Image image;
-	private int pX, pY;
+	private float pX, pY;
 	
 	public Lightning(float x, float y) throws SlickException
 	{
@@ -17,8 +17,8 @@ public class Lightning extends Projectile
 		time = 0;
 		image = new Image("res/lightningBolt.png");
 		Player p = Player.getPlayer();
-		pX = (int)x-(int)p.getPosX();
-		pY = (int)y-(int)p.getPosY();
+		pX = x-p.getPosX();
+		pY = y-p.getPosY();
 		
 	}
 	

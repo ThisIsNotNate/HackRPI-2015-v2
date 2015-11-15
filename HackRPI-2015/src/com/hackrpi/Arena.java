@@ -46,7 +46,7 @@ public class Arena extends BasicGameState
 		player.update(container, sbg, delta);
 		
 		Input input = container.getInput();
-		if(input.isKeyDown(Input.KEY_ESCAPE))
+		if(input.isKeyPressed(Input.KEY_ESCAPE))
 			sbg.enterState(Game.PAUSE);
 	}	
 

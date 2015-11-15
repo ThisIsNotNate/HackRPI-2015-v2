@@ -26,7 +26,7 @@ public class Player extends Entity
 		time = 0;
 		healthMax = 100;
 		health = healthMax;
-		speed = .8f;
+		speed = .5f;
 		sheet = new SpriteSheet("res/BobRoss.png", 90, 90);
 		isWalking = false;
 		
@@ -53,9 +53,7 @@ public class Player extends Entity
 	public void render(GameContainer container, StateBasedGame sbg, Graphics g) throws SlickException
 	{
 		if(isWalking)
-		{
 			walking.draw(595, 315);
-		}
 		if(health <= 0)
 			sbg.enterState(Game.END);
 	}  

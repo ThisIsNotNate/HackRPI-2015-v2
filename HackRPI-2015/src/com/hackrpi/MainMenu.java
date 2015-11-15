@@ -14,10 +14,12 @@ import org.newdawn.slick.Music;
 public class MainMenu extends BasicGameState
 {
 	Image background, rossSig;
+	Image opener1, opener2, opener3;
 	Music menuMusic;
 	Sound openingSound, blip;
 	Button playButton;
 	Button exitButton;
+	boolean flag;
 	
 	public MainMenu(int state){}
 	
@@ -25,6 +27,11 @@ public class MainMenu extends BasicGameState
 	{
 		background = new Image("res/MenuBG.png");
 		rossSig = new Image("res/rossSig.png");
+		
+		opener1 = new Image("res/opener1.png");
+		opener2 = new Image("res/Opener2.png");
+		opener3 = new Image("res/Opener3.png");
+		flag = false;
 		
 		openingSound = new Sound("res/HappyLittleTreesFinal.wav");
 		openingSound.play();
@@ -49,10 +56,8 @@ public class MainMenu extends BasicGameState
 		{
 			Player.resetPlayer();
 			Arena.resetWave();
-			sbg.getState(Game.END).init(container,sbg);
-			sbg.getState(Game.ARENA).init(container ,sbg);
-			sbg.enterState(Game.ARENA);
 			openingSound.stop();
+			sbg.enterState(Game.CUTSCENE);
 		}
 		
 		if(exitButton.isClicked(input))

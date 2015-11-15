@@ -33,7 +33,7 @@ public class HUD
 		
 		for(String value : abilities.values())
 		{
-			g.drawImage(lookupImageByString(value), 36 * index, 543);
+			g.drawImage(lookupImageByString(value), 36 + lockedAbility.getWidth() * (index - 1), 543);
 			index++;
 		}
 	}

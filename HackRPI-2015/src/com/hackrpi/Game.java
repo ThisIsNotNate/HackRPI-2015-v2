@@ -12,6 +12,7 @@ public class Game extends StateBasedGame
 	public static final int PAUSE = 2;
 	public static final int UPGRADES = 3;
 	public static final int END = 4;
+	public static final int CUTSCENE = 5;
 	
 	public Game(String name)
 	{
@@ -21,6 +22,7 @@ public class Game extends StateBasedGame
 		addState(new Pause(PAUSE));
 		addState(new Upgrades(UPGRADES));
 		addState(new End(END));
+		addState(new Cutscene(CUTSCENE));
 	}
 
 	public void initStatesList(GameContainer gc) throws SlickException {}

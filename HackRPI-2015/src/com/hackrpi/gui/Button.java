@@ -8,7 +8,7 @@ import org.newdawn.slick.Sound;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.Graphics;
 
-public class Button
+public class Button 
 {
 	private Image image;
 	private int x, y;

@@ -49,6 +49,7 @@ public class MainMenu extends BasicGameState
 		{
 			Player.resetPlayer();
 			Arena.resetWave();
+			sbg.getState(Game.END).init(container,sbg);
 			sbg.getState(Game.ARENA).init(container ,sbg);
 			sbg.enterState(Game.ARENA);
 			openingSound.stop();

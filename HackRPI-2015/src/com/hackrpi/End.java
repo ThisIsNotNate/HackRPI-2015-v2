@@ -20,6 +20,7 @@ public class End extends BasicGameState
 	public void init(GameContainer container, StateBasedGame sbg) throws SlickException
 	{
 		exitButton = new Button("res/exitButton.png", 480, 480, 320, 90);
+		played = false;
 	}
 
 	@Override
@@ -34,15 +35,9 @@ public class End extends BasicGameState
 		
 		if(!played)
 		{
-			try {
-				Thread.sleep(1500);
-				spooky = new Sound("res/BeatTheDevil.wav");
-				spooky.play();
-				played = true;
-
-			} catch (InterruptedException e) {
-
-			}
+			spooky = new Sound("res/BeatTheDevil.wav");
+			spooky.play();
+			played = true;
 		}
 		Input input = container.getInput();
 		if(exitButton.isClicked(input))
@@ -54,5 +49,10 @@ public class End extends BasicGameState
 	public int getID() 
 	{
 		return 4;
+	}
+	
+	public void reset()
+	{
+		played = false;
 	}
 }

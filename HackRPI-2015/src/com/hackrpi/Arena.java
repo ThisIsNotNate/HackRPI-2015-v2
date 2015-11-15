@@ -259,7 +259,7 @@ public class Arena extends BasicGameState
 			if(!removed)
 				i++;
 		}
-		//hud.update(container, sbg, delta, Player.getPlayer());
+		hud.update(container, sbg, delta, Player.getPlayer());
 	}	
 
 	@Override

@@ -14,7 +14,7 @@ public class Lightning extends Projectile
 	
 	public Lightning(int type, GameContainer container, float x, float y) throws SlickException
 	{
-		super(50, 5f, 25, 25, x, y);
+		super(20, 5f, 25, 25, x, y);
 		time = 0;
 		image = new Image("res/lightningBolt.png");
 		if(type == 1)

@@ -34,7 +34,6 @@ public class Cloud extends Entity
 		time = 0;
 		health = 100;
 		speed = .08f;
-		damage = 20;
 		time = 0;
 		width = 100;
 		height = 100;

@@ -124,7 +124,6 @@ public class Arena extends BasicGameState
 				   	enemies.add(new Tree());
 				   	enemies.add(new Tree());
 				   	enemies.add(new Tree());
-				   	enemies.add(new Cloud());
 				   break;
 			
 			default:

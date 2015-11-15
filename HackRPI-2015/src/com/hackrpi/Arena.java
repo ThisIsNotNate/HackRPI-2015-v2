@@ -170,7 +170,6 @@ public class Arena extends BasicGameState
 	public void update(GameContainer container, StateBasedGame sbg, int delta) throws SlickException 
 	{
 		time += delta;
-		
 		if((addedEnemies.size() == 0 && enemies.size() > 0) || (enemies.size() > 0 && time > 4500 + 1500 * Math.sin(Math.random())))
 		{
 			time = 0;
@@ -240,6 +239,8 @@ public class Arena extends BasicGameState
 		while(i < Player.getPlayer().projectiles.size())
 		{
 			boolean removed = false;
+			if(Player.getPlayer().projectiles.get(i).time > 100)
+				Player.getPlayer().projectiles.remove(i);
 			int j = 0;
 			while(j < addedEnemies.size())
 			{
@@ -258,7 +259,7 @@ public class Arena extends BasicGameState
 			if(!removed)
 				i++;
 		}
-		//hud.update(container, sbg, delta, Player.getPlayer());
+		hud.update(container, sbg, delta, Player.getPlayer());
 	}	
 
 	@Override

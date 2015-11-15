@@ -1,7 +1,6 @@
 package com.hackrpi;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import com.hackrpi.Player;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;

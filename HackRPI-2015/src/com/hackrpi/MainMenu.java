@@ -13,7 +13,7 @@ import org.newdawn.slick.Music;
 
 public class MainMenu extends BasicGameState
 {
-	Image background;
+	Image background, rossSig;
 	Music menuMusic;
 	Sound openingSound, blip;
 	Button playButton;
@@ -24,6 +24,7 @@ public class MainMenu extends BasicGameState
 	public void init(GameContainer container, StateBasedGame sbg) throws SlickException 
 	{
 		background = new Image("res/MenuBG.png");
+		rossSig = new Image("res/rossSig.png");
 		
 		openingSound = new Sound("res/HappyLittleTreesFinal.wav");
 		openingSound.play();
@@ -35,6 +36,7 @@ public class MainMenu extends BasicGameState
 	public void render(GameContainer container, StateBasedGame sbg, Graphics g) throws SlickException
 	{
 		g.drawImage(background, 0, 0);
+		g.drawImage(rossSig, 390, 0);
 		playButton.render(g);
 		exitButton.render(g);
 	}

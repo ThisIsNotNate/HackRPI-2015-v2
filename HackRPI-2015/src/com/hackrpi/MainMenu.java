@@ -57,7 +57,8 @@ public class MainMenu extends BasicGameState
 			Player.resetPlayer();
 			Arena.resetWave();
 			openingSound.stop();
-			sbg.enterState(Game.CUTSCENE);
+//			sbg.enterState(Game.CUTSCENE);
+			sbg.enterState(Game.ARENA);
 		}
 		
 		if(exitButton.isClicked(input))

@@ -37,7 +37,7 @@ public class MainMenu extends BasicGameState
 		openingSound.play();
 		
 		playButton = new Button("res/playButton.png", 480, 300, 320, 90);
-		exitButton = new Button("res/exitButton.png", 480, 480, 320, 90);
+		exitButton = new Button("res/quitButton.png", 480, 480, 320, 90);
 	}
 
 	public void render(GameContainer container, StateBasedGame sbg, Graphics g) throws SlickException

@@ -136,8 +136,13 @@ public class Arena extends BasicGameState
 	{
 		if(enemies.size() == 0 && addedEnemies.size() == 0)
 		{
-			Player.getPlayer().setHealth(100);
-			sbg.enterState(Game.UPGRADES);
+			if(wave == 5)
+				sbg.enterState(Game.MAIN_MENU);
+			else
+			{
+				Player.getPlayer().setHealth(100);
+				sbg.enterState(Game.UPGRADES);
+			}
 		}
 		g.drawImage(background, -Player.getPlayer().getX(), -Player.getPlayer().getY());
 		g.drawString("Wave: " + wave, 1200, 10);
@@ -258,7 +263,12 @@ public class Arena extends BasicGameState
 		while(i < Player.getPlayer().projectiles.size())
 		{
 			boolean removed = false;
-			if(Player.getPlayer().projectiles.get(i).time > 100)
+			if(Player.getPlayer().projectiles.get(i) instanceof ChiselProjectile && Player.getPlayer().projectiles.get(i).time > 100)
+			{
+				removed = true;
+				Player.getPlayer().projectiles.remove(i);
+			}
+			else if(Player.getPlayer().projectiles.get(i).time > 500)
 			{
 				removed = true;
 				Player.getPlayer().projectiles.remove(i);

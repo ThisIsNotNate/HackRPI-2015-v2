@@ -35,7 +35,7 @@ public class Player extends Entity
 	private Animation walkingUp, walkingDown, walkingLeft, walkingRight, walking;
 	private Animation attackingUp, attackingDown, attackingLeft, attackingRight, attacking;
 	private boolean isAttacking;
-	private int direction;
+	private int direction, type;
 	
 	private Player() throws SlickException
 	{
@@ -54,6 +54,7 @@ public class Player extends Entity
 		health = healthMax;
 		speed = .3f;
 		direction = 2;
+		type = 1;
 		sheet = new SpriteSheet("res/BobRoss.png", 90, 90);
 		
 		int[] duration = {1, 1, 1};
@@ -103,7 +104,10 @@ public class Player extends Entity
 		time += delta;
 		
 		Input input = container.getInput();
-		
+		if(input.isKeyPressed(Input.KEY_1))
+			type = 1;
+		else if(input.isKeyPressed(Input.KEY_2) && abilities.get(2) != null)
+			type = 2;
 		if(input.isMousePressed(Input.MOUSE_LEFT_BUTTON))
 		{
 			switch(direction)
@@ -118,6 +122,23 @@ public class Player extends Entity
 						break;
 			}
 			isAttacking = true;
+			if(type == 1)
+			{
+				projectiles.add(new ChiselProjectile(container, posX + 45, posY + 45));
+			}
+			else if(type == 2)
+			{
+				switch(abilities.get(2))
+				{
+					case "ALIZARIN_CRIMSON":
+						 projectiles.add(new RedProjectile(container, posX + 45, posY + 45));
+						 break;
+					case "CADMIUM_YELLOW":
+						 projectiles.add(new Lightning(2, container, posX + 45, posY + 45));
+						 break;
+					default: break;
+				}
+			}
 			if(time > 100)
 			{
 				time = 0;

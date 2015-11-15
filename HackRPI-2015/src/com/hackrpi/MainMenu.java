@@ -25,6 +25,9 @@ public class MainMenu extends BasicGameState
 	{
 		background = new Image("res/MenuBG.png");
 		
+		openingSound = new Sound("res/HappyLittleTreesFinal.wav");
+		openingSound.play();
+		
 		playButton = new Button("res/playButton.png", 1280/4 * 2, 720/8 * 2, 320, 90);
 		exitButton = new Button("res/exitButton.png", 1280/4 * 2, 720/8 * 4, 320, 90);
 	}
@@ -41,10 +44,16 @@ public class MainMenu extends BasicGameState
 		Input input = container.getInput();
 		
 		if(playButton.isClicked(input))
+		{
 			sbg.enterState(Game.ARENA);
+			openingSound.stop();
+		}
 		
 		if(exitButton.isClicked(input))
+		{
 			container.exit();
+			openingSound.stop();
+		}
 	}
 	
 	public int getID() 

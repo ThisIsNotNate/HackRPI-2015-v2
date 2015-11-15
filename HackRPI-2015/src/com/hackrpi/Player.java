@@ -18,8 +18,8 @@ public class Player extends Entity
 	
 	public Player() throws SlickException
 	{
-		posX = 50f;
-		posY = 50f;
+		posX = 595f;
+		posY = 315f;
 		width = 90;
 		height = 90;
 		time = 0;
@@ -44,14 +44,13 @@ public class Player extends Entity
 		changeDuration(walkingLeft, 150);
 		walkingRight = new Animation(walkRight, duration, false);
 		changeDuration(walkingRight, 150);
-		walking = new Animation(walkUp, duration, false);
+		walking = new Animation(walkDown, duration, false);
 		changeDuration(walking, 150);
 	}
 
 	public void render(GameContainer container, StateBasedGame sbg, Graphics g) throws SlickException
 	{
-		if(isWalking)
-			walking.draw(posX, posY);
+		walking.draw(posX, posY);
 		if(health <= 0)
 			sbg.enterState(Game.END);
 	}  
@@ -70,28 +69,24 @@ public class Player extends Entity
 		if(input.isKeyDown(Input.KEY_S) || input.isKeyDown(Input.KEY_DOWN))
 		{
 			walking = walkingDown;
-			isWalking = true;
 			walking.update(delta);
 			posY += delta * speed;
 		}
 		if(input.isKeyDown(Input.KEY_W) || input.isKeyDown(Input.KEY_UP))
 		{
 			walking = walkingUp;
-			isWalking = true;
 			walking.update(delta);
 			posY -= delta * speed;
 		}
 		if(input.isKeyDown(Input.KEY_D) || input.isKeyDown(Input.KEY_RIGHT))
 		{
 			walking = walkingRight;
-			isWalking = true;
 			walking.update(delta);
 			posX += delta * speed;
 		}
 		if(input.isKeyDown(Input.KEY_A) || input.isKeyDown(Input.KEY_LEFT))
 		{
 			walking = walkingLeft;
-			isWalking = true;
 			walking.update(delta);
 			posX-= delta * speed;
 		}

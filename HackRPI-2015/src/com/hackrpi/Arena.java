@@ -31,14 +31,13 @@ public class Arena extends BasicGameState
 	@Override
 	public void init(GameContainer container, StateBasedGame sbg) throws SlickException 
 	{
-		if(wave == 1)
-			player = new Player();
-		
 		hud = new HUD();
 		time = 0;
 		background = new Image("res/gameBoard.png");
 		enemies = new ArrayList<Entity>();
 		addedEnemies = new ArrayList<Entity>();
+		if(wave == 1)
+			player = new Player();
 		switch(wave)
 		{
 			case 5: enemies.add(new Cloud());

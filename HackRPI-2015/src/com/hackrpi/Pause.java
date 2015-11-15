@@ -11,19 +11,21 @@ import com.hackrpi.gui.Button;
 
 public class Pause extends BasicGameState
 {
-	Button exitButton;
+	Button exitButton, returnButton;
 	Button returnToMainMenuButton;
 	
 	public Pause(int state){}
 	
 	public void init(GameContainer container, StateBasedGame sbg) throws SlickException 
 	{
-		exitButton = new Button("res/returnButton.png", 640 - 160, 360 - 45, 320, 90);
+		exitButton = new Button("res/returnToMainMenuButton.png", 480, 480, 320, 90);
+		returnButton = new Button("res/returnButton.png", 480, 300, 320, 90);
 	}
 
 	@Override
 	public void render(GameContainer container, StateBasedGame sbg, Graphics g) throws SlickException
 	{
+		returnButton.render(g);
 		exitButton.render(g);
 	}
 
@@ -31,7 +33,7 @@ public class Pause extends BasicGameState
 	public void update(GameContainer container, StateBasedGame sbg, int delta) throws SlickException 
 	{
 		Input input = container.getInput();
-		if(input.isKeyPressed(Input.KEY_ESCAPE))
+		if(input.isKeyPressed(Input.KEY_ESCAPE) || returnButton.isClicked(input))
 			sbg.enterState(Game.ARENA);
 		
 		if(exitButton.isClicked(input))

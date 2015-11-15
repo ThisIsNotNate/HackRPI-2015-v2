@@ -31,11 +31,11 @@ public class Lightning extends Projectile
 	{
 		time += delta;
 		
-		if(pX >0)
+		if(pX <0)
 			posX += delta * speed;
 		else
 			posX -= delta*speed;
-		if(pY > 0)
+		if(pY < 0)
 			posY += delta * speed;
 		else
 			posY -= delta*speed;

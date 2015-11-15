@@ -34,6 +34,7 @@ public class Player extends Entity
 	
 	private SpriteSheet sheet;
 	private Animation walkingUp, walkingDown, walkingLeft, walkingRight, walking;
+	private Animation attackingUp, attackingDown, attackingLeft, attackingRight, attacking;
 	private Weapon currentWeapon;
 	
 	private Player() throws SlickException
@@ -73,6 +74,22 @@ public class Player extends Entity
 		changeDuration(walkingRight, 150);
 		walking = new Animation(walkDown, duration, false);
 		changeDuration(walking, 150);
+		
+		Image[] attackUp = {sheet.getSprite(3,1), sheet.getSprite(4, 1), sheet.getSprite(5, 1)};
+		Image[] attackDown = {sheet.getSprite(3,0), sheet.getSprite(4, 0), sheet.getSprite(5, 0)};
+		Image[] attackLeft = {sheet.getSprite(3,3), sheet.getSprite(4, 3), sheet.getSprite(5, 3)};
+		Image[] attackRight = {sheet.getSprite(3,2), sheet.getSprite(4, 2), sheet.getSprite(5, 2)};
+		
+		attackingUp = new Animation(attackUp, duration, false);
+		changeDuration(attackingUp, 150);
+		attackingDown = new Animation(attackDown, duration, false);
+		changeDuration(attackingDown, 150);
+		attackingLeft = new Animation(attackLeft, duration, false);
+		changeDuration(attackingLeft, 150);
+		attackingRight = new Animation(attackRight, duration, false);
+		changeDuration(attackingRight, 150);
+		attacking = new Animation(attackDown, duration, false);
+		changeDuration(attacking, 150);
 	}
 
 	public void render(GameContainer container, StateBasedGame sbg, Graphics g) throws SlickException
@@ -93,7 +110,18 @@ public class Player extends Entity
 			if(time > 1000)
 			{
 				time = 0;
-				//projectiles.add(new RedProjectile(posX, posY));
+				switch(abilities.get(1))
+				{
+					case "ALIZARIN_CRIMSON":
+						 projectiles.add(new RedProjectile(posX, posY));
+						 break;
+					case "CADMIUM_YELLOW":
+						 projectiles.add(new Lightning(posX, posY));
+						 break;
+					case "KNIFE":
+						 projectiles.add(new ChiselProjectile(container, posX, posY));
+						 break;
+				}
 			}
 		}
 				
@@ -143,14 +171,14 @@ public class Player extends Entity
 	{
 		switch(ability)
 		{
-		case "ALIZARIN_CRIMSON":
-			abilities.remove(1);
-			abilities.put(1, "ALIZARIN_CRIMSON");
-			break;
-		case "CADMIUM_YELLOW":
-			abilities.remove(1);
-			abilities.put(1, "CADMIUM_YELLOW");
-			break;
+			case "ALIZARIN_CRIMSON":
+				abilities.remove(1);
+				abilities.put(1, "ALIZARIN_CRIMSON");
+				break;
+			case "CADMIUM_YELLOW":
+				abilities.remove(1);
+				abilities.put(1, "CADMIUM_YELLOW");
+				break;
 		}
 	}
 	

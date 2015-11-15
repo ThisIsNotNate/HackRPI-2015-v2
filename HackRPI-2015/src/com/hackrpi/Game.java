@@ -32,7 +32,7 @@ public class Game extends StateBasedGame
 		AppGameContainer appgc;
 		try
 		{
-			appgc = new AppGameContainer(new Game("Bob Ross Siege"), 1280, 720, false);
+			appgc = new AppGameContainer(new Game("Ross"), 1280, 720, false);
 			appgc.setIcon("res/icon.jpg");
 			appgc.setTargetFrameRate(60);
 			appgc.start();
